@@ -11,17 +11,59 @@
 }
 
 .Header img {
+    left: 20%;
     height: 8vh;
     top: 1vh;
 }
 
-.Header ul {
-    list-style: none;
-    left: 20%;
-}
-
-.Header ul > li {
-    display: block;
+.leftSide {
+    display: flex;
     margin-left: 20px;
     float: left;
+    height:45px;
+    align-items: center;
 }
+
+.leftSide li {
+    display: flex;
+    float: right;
+    margin: 0 20px 0 20px;
+}
+
+.rightSide li > button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.Header ul {
+    list-style: none; 
+    padding: 1vh;
+    margin: 1vh;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+
+.rightSide {
+    display: flex;
+    margin-left: 20px;
+    float: right;
+    height:45px;
+    align-items: center;
+    color: white;
+}
+
+.rightSide li {
+    display: flex;
+    float: right;
+    margin: 0 20px 0 20px;
+}
+
+
