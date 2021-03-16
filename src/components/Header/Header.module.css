@@ -1,0 +1,27 @@
+.Header {
+    width: 100%;
+    background-color: #343434;
+    height: 10vh;
+    top: 0;
+    position: fixed;
+}
+
+.Header h1 {
+    color:#df2935;
+}
+
+.Header img {
+    height: 8vh;
+    top: 1vh;
+}
+
+.Header ul {
+    list-style: none;
+    left: 20%;
+}
+
+.Header ul > li {
+    display: block;
+    margin-left: 20px;
+    float: left;
+}

@@ -1,6 +1,6 @@
 function Header() {
     return (
-      <div className="Header">
+      <div className="navBar">
         <h1>Next Movie</h1>
       </div>
     );
