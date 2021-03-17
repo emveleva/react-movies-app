@@ -5,10 +5,6 @@
     padding-top: 10vh;
     height: 100%;
     padding-bottom: 20%;
-}
-
-.login > form {
-
     text-align: center;
 }
 
@@ -24,6 +20,7 @@
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
+    outline: none;
 
 }
 

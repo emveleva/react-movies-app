@@ -10,9 +10,9 @@ function Header() {
             <li><h1>Next Movie</h1></li>
           </ul>
           <ul className={style.rightSide}>
-          <li><button><NavBar>Home</NavBar></button></li>
-            <li><NavBar>Register</NavBar></li>
-            <li><NavBar>Login</NavBar></li>     
+          <li><button><NavLink to='/'><NavBar>Home</NavBar></NavLink></button></li>
+            <li><NavLink to='/register'><NavBar>Register</NavBar></NavLink></li>
+            <li><NavLink to='/login'><NavBar>Login</NavBar></NavLink></li>     
           </ul>
       </div>
     );

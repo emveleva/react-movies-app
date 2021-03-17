@@ -14,17 +14,18 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+            <Router>
       <Header />
-      <Router>
+
         <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/register' component={Register} />
-        <Route path='/login' component={Login} />
-        <Route path='/logout' component={Logout} />
-        <Route path='/profile' component={Profile} />
-        <Route component={NotFound} />
+          <Route path='/' exact component={Home} />
+          <Route path='/register' component={Register} />
+          <Route path='/login' component={Login} />
+          <Route path='/logout' component={Logout} />
+          <Route path='/profile' component={Profile} />
+          <Route component={NotFound} />
         </Switch>
-        </Router>
+      </Router>
       
       <Footer />
     </div>
