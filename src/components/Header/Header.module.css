@@ -1,4 +1,4 @@
-.Header {
+.header {
     width: 100%;
     background-color: #343434;
     height: 10vh;
@@ -6,11 +6,11 @@
     position: fixed;
 }
 
-.Header h1 {
+.header h1 {
     color:#df2935;
 }
 
-.Header img {
+.header img {
     left: 20%;
     height: 8vh;
     top: 1vh;
@@ -31,10 +31,10 @@
 }
 
 .rightSide li > button {
-    background-color: red;
+    background-color: #df2935;
     border: none;
     color: white;
-    padding: 10px 32px;
+    padding: 10px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -42,12 +42,12 @@
     border-radius: 10px;
 }
 
-.Header ul {
+.header ul {
     list-style: none; 
     padding: 1vh;
     margin: 1vh;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 

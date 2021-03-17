@@ -8,7 +8,7 @@
 }
 
 .Footer p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: flex;
+    text-align: center;
+    margin: 3vh;
 }
