@@ -1,0 +1,42 @@
+.profile {
+    background-color: #f9f8f9;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20vh;
+    height: 100%;
+    padding-bottom: 30%;
+}
+
+.profile h1 {
+    display: block;
+    color:#343434;
+}
+.profile li {
+    border-radius: 15px;
+    list-style: none;
+    text-align: center;
+}
+
+.profile div {
+    height: 300px;
+    width: 400px;
+    background-color: #343434;
+    border-radius: 15px;
+    list-style: none;
+    text-align: center;
+}
+
+.profile img {
+    height: 200px;
+    padding-top: 50px;
+}
+
+.profileLeft {
+    margin-left: 130px;
+    float: left;
+}
+
+.profileRight {
+    margin-right: 130px;
+    float: right;
+}
