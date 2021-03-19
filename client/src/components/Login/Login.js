@@ -1,6 +1,6 @@
 function Login() {
     return (
-        <div className='form'>
+        <main className='form'>
             <h1>Login</h1>
 
         <form action="/#login" method="POST">
@@ -17,7 +17,7 @@ function Login() {
                 <button>Login</button>
             </div>
         </form>
-        </div>
+        </main>
     );
     }
     

@@ -1,6 +1,6 @@
 function Register() {
     return (
-        <div className='form'>
+        <main className='form'>
             <h1>Register</h1>
 
             <form action="/#register" method="POST">
@@ -21,7 +21,7 @@ function Register() {
                     <button>Register</button>
                 </div>
             </form>
-        </div>
+        </main>
     );
     }
     

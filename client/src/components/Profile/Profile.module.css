@@ -1,16 +1,5 @@
-.profile {
-    background-color: #f9f8f9;
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 25vh;
-    height: 100%;
-    padding-bottom: 30%;
-    text-align: center;
-}
-
 .profile h1 {
     display: inline;
-    color:#343434;
     margin-left: 10%;
     margin-right: 10%;    
 }

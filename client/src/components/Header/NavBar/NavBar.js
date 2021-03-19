@@ -2,9 +2,9 @@ import style from './NavBar.module.css'
 
 function NavBar(props) {
     return (
-      <li className="listItem">
+      <li>
           <span className={style.navListItem}>{props.children}</span> 
-  </li>
+      </li>
 
     );
   }
