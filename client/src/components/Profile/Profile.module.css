@@ -2,19 +2,17 @@
     background-color: #f9f8f9;
     width: 80%;
     margin: 0 auto;
-    padding-top: 20vh;
+    padding-top: 25vh;
     height: 100%;
     padding-bottom: 30%;
+    text-align: center;
 }
 
 .profile h1 {
-    display: block;
+    display: inline;
     color:#343434;
-}
-.profile li {
-    border-radius: 15px;
-    list-style: none;
-    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;    
 }
 
 .profile div {
@@ -24,19 +22,12 @@
     border-radius: 15px;
     list-style: none;
     text-align: center;
+    display: inline-block;
+    position: relative;
+    margin: 10px 55px 0 55px;
 }
 
 .profile img {
     height: 200px;
     padding-top: 50px;
-}
-
-.profileLeft {
-    margin-left: 130px;
-    float: left;
-}
-
-.profileRight {
-    margin-right: 130px;
-    float: right;
 }

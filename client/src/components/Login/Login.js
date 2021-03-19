@@ -1,8 +1,6 @@
-import style from './Login.module.css';
-
 function Login() {
     return (
-        <div className={style.login}>
+        <div className='form'>
             <h1>Login</h1>
 
         <form action="/#login" method="POST">

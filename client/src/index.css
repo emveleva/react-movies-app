@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.form {
+  background-color: #f9f8f9;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10vh;
+  height: 100%;
+  padding-bottom: 20%;
+  text-align: center;
+}
+
+.form p {
+  margin: 10px 0;
+  color: #df2935;
+}
+
+.form input {
+  background-color: #343434;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.form button {
+  background-color: #df2935;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 25px;
+}
