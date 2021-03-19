@@ -6,6 +6,7 @@ import NotFound from './components/NotFound'
 import Home from './components/Home'
 import Logout from './components/Logout'
 import Profile from './components/Profile'
+
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom'
 import './App.css';
