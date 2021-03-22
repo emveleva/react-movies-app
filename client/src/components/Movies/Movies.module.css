@@ -3,7 +3,7 @@
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 0 20px 0 20px;
+    padding: 10px 30px 10px 30px;
     width: 200px;
 }
 
@@ -11,9 +11,10 @@
     background-color: #343434;
     border-radius: 25px;
     width: 90%;
-    padding-bottom: 20px;
+    padding: 0 0 50px 0;
     margin: 0 auto;
     margin-bottom: 50px;
+    list-style: none;
 }
 
 .movies img {
