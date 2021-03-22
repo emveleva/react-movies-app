@@ -3,7 +3,6 @@
     background-color: #343434;
     height: 10vh;
     top: 0;
-    position: fixed;
 }
 
 .header h1 {
@@ -63,4 +62,8 @@
 .rightSide li {
     float: right;
     margin: 0 15px 0 15px;
+}
+
+.header {
+    clear: both;
 }

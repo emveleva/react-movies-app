@@ -1,10 +1,6 @@
-.dashboard {
-    padding-top: 170px;
-
-}
-
 .dashboard h1 {
-    display: inline;
+    display: inline-block;
+    padding-top: 60px;
     margin-left: 10%;
     margin-right: 10%;    
 }

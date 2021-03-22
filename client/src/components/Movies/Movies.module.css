@@ -49,3 +49,7 @@
 .movies h1 {
     margin: 5px;
 }
+
+.movies div {
+    height: 100%;
+}

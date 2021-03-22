@@ -41,18 +41,13 @@ class Movies extends Component {
             <main>
                 <ul>
                 <h1 className={style.movies}>Movies</h1>
-                <Link to='/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>
-
-                
+                <Link to='/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>                
                 </ul>
-
-
                 <Genres />
                 <div className={style.movies}>
                 <ul> {this.state.movies.map(x =>
                 <Movie key={x.id} {...x}/>)}
                 </ul>
-
              </div>
         </main>
         );
