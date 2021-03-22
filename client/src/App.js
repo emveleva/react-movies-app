@@ -6,6 +6,8 @@ import NotFound from './components/NotFound'
 import Home from './components/Home'
 import Logout from './components/Logout'
 import Dashboard from './components/Dashboard'
+import ToWatch from './components/Dashboard/ToWatch'
+import Watched from './components/Dashboard/Watched'
 import Movies from './components/Movies'
 import AddNew from './components/Movies/AddNew'
 
@@ -25,6 +27,8 @@ function App() {
           <Route path='/register' component={Register} />
           <Route path='/movies' component={Movies} />
           <Route path='/add-new' component={AddNew} />
+          <Route path='/to-watch' component={ToWatch} />
+          <Route path='/watched' component={Watched} />
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
           <Route path='/dashboard' component={Dashboard} />

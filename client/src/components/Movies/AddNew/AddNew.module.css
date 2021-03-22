@@ -1,13 +1,24 @@
-.addnew {
-    display: flex;
+.addnew div {
 
 }
 
-.addnew div {
+.leftSide{
+    float: left;
+    margin-left: 50px;
     width: 50%;
-    display: inline-block;
+}
+
+.rightSide {
+    float: left;
+    margin-left: 50px;
 }
 
 .addnew input {
     width: 300px;
+}
+
+.center {
+    clear: both;
+    display: block;
+    padding-top: 30px;
 }
