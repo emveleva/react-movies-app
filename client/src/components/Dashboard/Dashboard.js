@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
-import style from './Profile.module.css';
+import style from './Dashboard.module.css';
 
-function Profile() {
+function Dashboard() {
     return (
-      <main className={style.profile}>
+      <main className={style.dashboard}>
           <h1>Movies to watch</h1>
           <h1>Already watched</h1>
           
@@ -19,5 +19,5 @@ function Profile() {
     );
   }
     
-    export default Profile
+    export default Dashboard;
 

@@ -22,14 +22,14 @@
 
 .leftSide {
     display: flex;
-    margin-left: 20px;
+    margin-left: 15px;
     float: left;
     align-items: center;
 }
 
 .leftSide li {
     float: right;
-    margin: 0 20px 0 20px;
+    margin: 0 15px 0 15px;
 }
 
 .rightSide li > button {
@@ -40,7 +40,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 25px;
 }
 
 .header ul {
@@ -54,7 +54,7 @@
 
 .rightSide {
     display: flex;
-    margin-left: 20px;
+    margin-left: 15px;
     float: right;
     align-items: center;
     color: white;
@@ -62,5 +62,5 @@
 
 .rightSide li {
     float: right;
-    margin: 0 20px 0 20px;
+    margin: 0 15px 0 15px;
 }

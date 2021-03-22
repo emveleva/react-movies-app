@@ -1,15 +1,15 @@
-.profile {
+.dashboard {
     padding-top: 170px;
 
 }
 
-.profile h1 {
+.dashboard h1 {
     display: inline;
     margin-left: 10%;
     margin-right: 10%;    
 }
 
-.profile div {
+.dashboard div {
     height: 300px;
     width: 400px;
     background-color: #343434;
@@ -21,7 +21,7 @@
     margin: 10px 55px 0 55px;
 }
 
-.profile img {
+.dashboard img {
     height: 200px;
     padding-top: 50px;
 }

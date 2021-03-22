@@ -1,0 +1,31 @@
+.genres li {
+    list-style: none;
+    display: inline-block;
+    color: white;
+    text-align: center;
+}
+
+.genres a {
+    color: white;
+    text-decoration: none;
+    padding: 0 10px 0 10px;
+}
+
+.genres a:hover {
+    background-color: grey;
+    border-radius: 25px;
+    padding-top: 1px;
+    padding-bottom: 3px;
+}
+
+.genres ul {
+    background-color: #343434;
+    display: inline-block;
+    border-radius: 25px;
+    align-self: center;
+    padding: 5px 10px 7px 10px;
+}
+
+.active {
+    color: #df2935
+}

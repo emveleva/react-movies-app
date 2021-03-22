@@ -1,14 +1,14 @@
-.Footer {
+.footer {
     width: 100%;
     background-color: #343434;
     height: 10vh;
-    bottom: 0;
-    position: fixed;
     color: white;
-}
-
-.Footer p {
-    position: flex;
+    bottom: 0;
+    display: flex;
+  }
+  
+  .footer p {
+    display: inline;
     text-align: center;
     margin: 3vh;
-}
+  }

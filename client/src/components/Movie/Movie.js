@@ -7,7 +7,8 @@ const Movie = ({
     description,
     actors,
     posterURL,
-    likes
+    likes,
+    genre
 }) => {
 
     return (
@@ -16,8 +17,8 @@ const Movie = ({
             <p className="img"><img src={posterURL} /></p>
 
             <div className="movie-info">
-                <Link to="#"><button className="button"><i className="fas fa-heart"></i>Like</button></Link>
-                <Link to={`/movies/details/${id}`}><button >Details</button></Link>
+                <Link to="#"><button><i className="fas fa-heart"></i>Like</button></Link>
+                <Link to={`/movies/details/${id}`}><button>Details</button></Link>
                 <i className="fas fa-heart"></i> <span> {likes}</span>
             </div>
         </li>

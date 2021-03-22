@@ -6,7 +6,8 @@
             "year": "2012",
             "description": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
             "actors": " Robert Downey Jr., Chris Evans, Scarlett Johansson",
-            "posterURL": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg"
+            "posterURL": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
+            "genre": "Action"
         },
         {
             "id": 2,
@@ -14,7 +15,9 @@
             "year": "2016",
             "description": "Fearing that the actions of Superman are left unchecked, Batman takes on the Man of Steel, while the world wrestles with what kind of a hero it really needs.",
             "actors": "Ben Affleck, Henry Cavill, Amy Adams",
-            "posterURL": "https://upload.wikimedia.org/wikipedia/en/2/20/Batman_v_Superman_poster.jpg"
+            "posterURL": "https://upload.wikimedia.org/wikipedia/en/2/20/Batman_v_Superman_poster.jpg",
+            "genre": "Fantasy"
+            
         },
         {
             "id": 3,
@@ -22,7 +25,8 @@
             "year": "2020",
             "description": "A young Chinese maiden disguises herself as a male warrior in order to save her father.",
             "actors": "Yifei Liu, Donnie Yen, Li Gong",
-            "posterURL": "https://lumiere-a.akamaihd.net/v1/images/p_mulan2020_20204_b005decc.jpeg"
+            "posterURL": "https://lumiere-a.akamaihd.net/v1/images/p_mulan2020_20204_b005decc.jpeg",
+            "genre": "Adventure"
         },
         {
             "id": 4,
@@ -30,7 +34,44 @@
             "year": "2017",
             "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
             "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
-            "posterURL": "https://m.media-amazon.com/images/M/MV5BOTIwMDI0NjQ4OF5BMl5BanBnXkFtZTgwNjU0MzAyNDM@._V1_UY1200_CR90,0,630,1200_AL_.jpg"
+            "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
+            "genre": "animation"
+        },
+        {
+            "id": 5,
+            "title": "Ferdinand",
+            "year": "2017",
+            "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
+            "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
+            "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
+            "genre": "animation"
+        },
+        {
+            "id": 6,
+            "title": "Ferdinand",
+            "year": "2017",
+            "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
+            "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
+            "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
+            "genre": "animation"
+        },
+        {
+            "id": 7,
+            "title": "Ferdinand",
+            "year": "2017",
+            "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
+            "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
+            "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
+            "genre": "animation"
+        },
+        {
+            "id": 8,
+            "title": "Ferdinand",
+            "year": "2017",
+            "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
+            "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
+            "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
+            "genre": "animation"
         }
     ]
 }

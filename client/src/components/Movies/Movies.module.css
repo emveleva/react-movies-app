@@ -1,0 +1,46 @@
+.movies li {
+    list-style: none;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 0 20px 0 20px;
+    width: 200px;
+}
+
+.movies ul {
+    background-color: #343434;
+    border-radius: 25px;
+    align-self: center;
+    width: 95%;
+    padding-bottom: 20px;
+}
+
+.movies img {
+    height: 300px;
+}
+
+.movies button {
+    background-color: #df2935;
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 10px;
+
+}
+
+.moviesButton {
+    background-color: #df2935;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    margin: 25px;
+    width: 200px;
+}
+
+.movies h1 {
+    margin: 5px;
+}

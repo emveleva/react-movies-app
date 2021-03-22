@@ -1,0 +1,9 @@
+.addnew {
+    display: flex;
+
+}
+
+.addnew div {
+    width: 50%;
+    display: inline-block;
+}

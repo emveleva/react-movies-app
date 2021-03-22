@@ -1,12 +1,15 @@
-import api from './api';
+const url = 'http://localhost:5000/movies';
 
-export const getAll = () => {
-    return fetch(api.movies)
+export const getAll = (genre = '') => {
+    let moviesUrl = url + ((genre && genre != 'all') ? `?genre=${genre}` : '');
+    console.log(moviesUrl)
+    return fetch(moviesUrl)
         .then(res => res.json())
-        .catch(err => console.log('Handled error:' + err));
-};
-export const getOne = (movieId) => {
-    return fetch(`${api}/${movieId}`)
+        .catch(error => console.log(error));
+}
+
+export const getOne = (movieID) => {
+    return fetch(`${url}/${movieID}`)
         .then(res => res.json())
         .catch(error => console.log(error));
 }
