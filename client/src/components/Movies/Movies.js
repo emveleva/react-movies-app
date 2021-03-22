@@ -4,7 +4,6 @@ import * as movieService from '../../services/movieService';
 
 import Movie from '../Movie/Movie';
 import Genres from './Genres'
-import MovieDetails from '../Movie/MovieDetails'
 import style from './Movies.module.css'
 import { Link } from 'react-router-dom'
 
@@ -25,7 +24,6 @@ class Movies extends Component {
     }
     componentDidUpdate(prevProps) {
         const genre = this.props.match.params.genre;
-        console.log(genre)
         if (prevProps.match.params.genre == genre) {
             return;
         }

@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import * as movieService from '../../services/movieService';
+import style from './MovieDetails.module.css'
 
 const MovieDetails = ({
     match
@@ -7,19 +8,34 @@ const MovieDetails = ({
     let [movie, setMovie] = useState({});
 
     useEffect(() => {
-        movieService.getOne(match.params.movieID)
+        console.log(match.url)
+        movieService.getOne(match.params.movieId)
             .then(res => setMovie(res));
     }, []);
 
     return (
-        <section class="detailsOtherMovie">
-            <h3>{movie.name}</h3>
-            <p>: {movie.likes} <a href="#"><button class="button"><i class="fas fa-heart"></i>
-                    Like</button></a>
-            </p>
-            <p class="img"><img src={movie.imageURL} /></p>
-            <p class="description">{movie.description}</p>
-        </section>
+        <main class={style.moviedetails}>
+             <h1>Movie Details</h1>
+            <ul>
+                <div>
+            <h2>{movie.title}</h2>
+            <img src={movie.posterURL} />
+            </div>
+            <div>
+            <p><span>Year:</span> {movie.year}</p>
+            <p><span>Description:</span> {movie.description}</p>
+            <p><span>Actors:</span> {movie.actors}</p>
+            <p><span>Genre: </span> {movie.genre}</p>
+
+            <li>
+            <hr />
+            <p>This movie is not added to your movie lists.</p>
+            <p><button className={style.towatch}>To Watch</button>
+            <button className={style.watched}>Watched</button></p>
+            </li>
+            </div>
+            </ul>
+        </main>
     );
 };
 

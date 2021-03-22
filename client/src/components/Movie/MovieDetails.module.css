@@ -1,0 +1,81 @@
+.moviedetails ul {
+    background-color: #343434;
+    border-radius: 25px;
+    width: 90%;
+    padding: 0 0 50px 0;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    list-style: none;
+    min-height: 370px;
+    color: white;
+}
+
+.moviedetails p {
+    text-align: left;
+    padding: 2px;
+    margin: 2px;
+}
+.moviedetails div:first-child {
+    float: left;
+    width: 30%;
+}
+
+.moviedetails div:nth-child(2) {
+    float: left;
+    width: 60%;
+    padding-top: 30px;
+    min-height: 370px;
+}
+
+/* .moviedetails p{
+    display: inline;
+} */
+
+.moviedetails h1 {
+    padding-top: 20px;
+    
+}
+
+
+.moviedetails img {
+    height: 300px;
+    display: inline;
+}
+
+.moviedetails span {
+    padding-right: 10px;
+    text-decoration: underline;
+
+}
+
+.moviedetails div:last-child {
+    align-self: left;
+    margin-top: 20px;
+}
+
+
+.moviedetails button {
+    border: none;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 25px;
+    outline: none;
+    width: 80px;
+    margin: 2px 5px;
+    font-weight: bold;
+
+}
+
+.moviedetails li {
+    padding-top: 20px;
+}
+
+.towatch {
+    background-color: #5271ff;
+}
+
+.watched {
+    background-color: #34b6a6;
+}
