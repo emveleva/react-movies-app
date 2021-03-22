@@ -40,9 +40,10 @@ class Movies extends Component {
         return (
             <main>
                 <ul>
-                <Link to='/add-new'><button className={style.moviesButton}>Add New Movie</button></Link>
-
                 <h1 className={style.movies}>Movies</h1>
+                <Link to='/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>
+
+                
                 </ul>
 
 

@@ -23,7 +23,7 @@ function AddNew() {
                     <input type="actors" placeholder="Brad Pitt" name="actors" />
                 </div>
                 <div>
-                    <p>Poster Url:</p>
+                    <p>Poster URL:</p>
                     <input type="posterURL" placeholder="https://" name="posterURL" />
                 </div>
                 <div>

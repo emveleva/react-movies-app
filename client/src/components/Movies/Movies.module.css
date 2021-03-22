@@ -10,9 +10,10 @@
 .movies ul {
     background-color: #343434;
     border-radius: 25px;
-    align-self: center;
-    width: 95%;
+    width: 90%;
     padding-bottom: 20px;
+    margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 .movies img {
@@ -26,19 +27,22 @@
     padding: 5px 8px;
     text-align: center;
     font-size: 14px;
-    border-radius: 10px;
+    border-radius: 25px;
+    outline: none;
+    width: 60px;
+    margin: 5px 10px;
 
 }
 
-.moviesButton {
+.addNewButton {
     background-color: #df2935;
     border: none;
     color: white;
     padding: 10px 25px;
     font-size: 16px;
     border-radius: 25px;
-    margin: 25px;
     width: 200px;
+    outline: none;
 }
 
 .movies h1 {
