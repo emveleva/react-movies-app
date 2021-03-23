@@ -26,9 +26,8 @@ function App() {
       <Header />
 
         <Switch>
-          <Route path='/' exact component={Movies} /> 
+          <Route path='/' exact component={Home} /> 
           <Route path='/register' component={Register} />
-          {/* <Route path='/movies' component={Movies} /> */}
           <Route path="/movies/details/:movieId" component={MovieDetails} />
           <Route path='/movies/:genre' component={Movies} />
           <Route path='/add-new' component={AddNew} />
