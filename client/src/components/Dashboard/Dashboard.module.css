@@ -22,3 +22,7 @@
     height: 200px;
     padding-top: 50px;
 }
+
+.dashboard h1:hover {
+    text-decoration: underline;
+}

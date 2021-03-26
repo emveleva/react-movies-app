@@ -39,14 +39,15 @@ ul {
   color: #df2935;
 }
 
-.form input {
+.form input, select{
   background-color: #343434;
   border: none;
-  color: white;
+  color: lightgrey;
   padding: 10px;
   font-size: 16px;
   border-radius: 25px;
   outline: none;
+  width: 300px;
 }
 
 .form button {
@@ -59,4 +60,3 @@ ul {
   border-radius: 25px;
   margin: 25px;
 }
-

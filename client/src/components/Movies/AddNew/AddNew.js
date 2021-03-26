@@ -8,21 +8,33 @@ function AddNew() {
             <form action="/#register" method="POST">
                 <div className={style.leftSide}>
                     <p>Title:</p>
-                    <input type="title" placeholder="Title" name="title" />
+                    <input type="title" placeholder="Title" name="title" required />
                     <p>Year:</p>
-                    <input type="year" placeholder="2021" name="year" />
+                    <input type="year" placeholder="2021" name="year" required />
                     <p>Description:</p>
-                    <input type="description" placeholder="Once upon a time..." name="description" />
+                    <input type="description" placeholder="Once upon a time..." name="description" required/>
                 </div>
                 <div className={style.rightSide}>
                     <p>Actors:</p>
-                    <input type="actors" placeholder="Brad Pitt" name="actors" />
+                    <input type="actors" placeholder="Brad Pitt" name="actors" required />
 
                     <p>Poster URL:</p>
-                    <input type="posterURL" placeholder="https://" name="posterURL" />
+                    <input type="posterURL" placeholder="https://" name="posterURL" required />
             
                     <p>Genre:</p>
-                    <input type="genre" placeholder="Action" name="genre" />
+                    {/* <input type="genre" placeholder="Action" name="genre" /> */}
+                    <select name="genre" id="genre" form="carform" placeholder="Select genre..." required>
+                        <option value="Select genre..." selected disabled hidden>Select genre...</option>
+                        <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="TV-Series">TV-Series</option>
+                    </select>
                 </div>
                 <div className={style.center}>
                     <p class="message"></p>

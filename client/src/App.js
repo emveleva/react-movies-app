@@ -10,7 +10,6 @@ import ToWatch from './components/Dashboard/ToWatch'
 import Watched from './components/Dashboard/Watched'
 import Movies from './components/Movies'
 import AddNew from './components/Movies/AddNew'
-import Genres from './components/Movies/Genres'
 import MovieDetails from './components/Movie/MovieDetails'
 
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -33,7 +32,7 @@ function App() {
           <Route path='/add-new' component={AddNew} />
           <Route path='/to-watch' component={ToWatch} />
           <Route path='/watched' component={Watched} />
-          <Route path='/login' component={Login} />
+          <Route path='/login' exact component={Login} />
           <Route path='/logout' component={Logout} />
           <Route path='/dashboard' component={Dashboard} />
           <Route component={NotFound} />

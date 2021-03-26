@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import style from './Dashboard.module.css';
+import { useContext } from "react";
+import { Redirect } from "react-router-dom";
+import { AuthContext } from "../../config/Auth";
 
 function Dashboard() {
     return (
@@ -8,11 +11,11 @@ function Dashboard() {
           <Link to='/watched'><h1>Already watched</h1></Link>
           
           <Link to='/to-watch'><div>
-            <img src="/img/to-watch2.png" alt="" srcset=""/>
+            <img src="/img/to-watch2.png" alt="" srcSet=""/>
             </div></Link>
 
             <Link to='/watched'><div>
-            <img src="/img/watched.png" alt="" srcset=""/>
+            <img src="/img/watched.png" alt="" srcSet=""/>
           </div> </Link>
       </main>
 

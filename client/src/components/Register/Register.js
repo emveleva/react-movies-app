@@ -1,9 +1,27 @@
+import {useState} from "react";
+import { Redirect } from "react-router-dom";
+import firebaseConfig from "../../config/config";
+
 function Register() {
+    const [currentUser, setCurrentUser] = useState(null);    
+    const handleSubmit = (e) => {
+      e.preventDefault();    
+      const { email, password } = e.target.elements;
+      try {
+        firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value);      
+        setCurrentUser(true);
+      } catch (error) {
+        alert(error);
+      }
+    };
+    if (currentUser) {
+        return <Redirect to="/dashboard" />;
+    }
     return (
         <main className='form'>
             <h1>Register</h1>
 
-            <form action="/#register" method="POST">
+            <form onSubmit={handleSubmit}>
                 <div>
                     <p>E-mail:</p>
                     <input type="email" placeholder="Email..." name="email" />
@@ -25,5 +43,5 @@ function Register() {
     );
     }
     
-    export default Register
+    export default Register;
 

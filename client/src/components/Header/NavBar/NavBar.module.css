@@ -2,3 +2,6 @@
     color: white;
     text-decoration: none;
 }
+.navListItem:hover {
+    text-decoration: underline;
+}

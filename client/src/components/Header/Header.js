@@ -1,8 +1,10 @@
 import NavBar from '../Header/NavBar'
 import style from './Header.module.css';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import {useState} from "react";
 
 function Header() {
+  console.log(useState)
     return (
       <div className={style.header}>
           <ul className={style.leftSide}>

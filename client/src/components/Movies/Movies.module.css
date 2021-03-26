@@ -15,9 +15,17 @@
     margin: 0 auto;
     margin-bottom: 50px;
     list-style: none;
+    min-height: 270px;
 }
 
-.movies img {
+.noentries {
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
+
+img {
     height: 300px;
 }
 
@@ -46,10 +54,20 @@
     outline: none;
 }
 
+.addNewButton:hover {
+    text-decoration: underline;
+}
+
 .movies h1 {
     margin: 5px;
 }
 
 .movies div {
     height: 100%;
+}
+
+.movies h2 {
+    padding-top: 80px;
+    margin: 0 auto;
+    color: white;
 }

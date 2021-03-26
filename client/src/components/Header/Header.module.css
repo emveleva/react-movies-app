@@ -56,13 +56,14 @@
     margin-left: 15px;
     float: right;
     align-items: center;
-    color: white;
+    color: red;
 }
 
 .rightSide li {
     float: right;
     margin: 0 15px 0 15px;
 }
+
 
 .header {
     clear: both;

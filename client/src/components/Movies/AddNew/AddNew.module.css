@@ -1,7 +1,3 @@
-.addnew div {
-
-}
-
 .leftSide{
     float: left;
     margin-left: 50px;
@@ -21,4 +17,8 @@
     clear: both;
     display: block;
     padding-top: 30px;
+}
+
+.addnew select {
+    width: 325px;
 }

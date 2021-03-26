@@ -7,7 +7,9 @@
             "description": "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
             "actors": " Robert Downey Jr., Chris Evans, Scarlett Johansson",
             "posterURL": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
-            "genre": "Action"
+            "genre": "Action",
+            "likes": "0",
+            "list": ""
         },
         {
             "id": 2,
@@ -16,7 +18,9 @@
             "description": "Fearing that the actions of Superman are left unchecked, Batman takes on the Man of Steel, while the world wrestles with what kind of a hero it really needs.",
             "actors": "Ben Affleck, Henry Cavill, Amy Adams",
             "posterURL": "https://upload.wikimedia.org/wikipedia/en/2/20/Batman_v_Superman_poster.jpg",
-            "genre": "Fantasy"
+            "genre": "Fantasy",
+            "likes": "0",
+            "list": ""
             
         },
         {
@@ -26,7 +30,9 @@
             "description": "A young Chinese maiden disguises herself as a male warrior in order to save her father.",
             "actors": "Yifei Liu, Donnie Yen, Li Gong",
             "posterURL": "https://lumiere-a.akamaihd.net/v1/images/p_mulan2020_20204_b005decc.jpeg",
-            "genre": "Adventure"
+            "genre": "Adventure",
+            "likes": "0",
+            "list": ""
         },
         {
             "id": 4,
@@ -35,7 +41,9 @@
             "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
             "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
             "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
-            "genre": "Animation"
+            "genre": "Animation",
+            "likes": "0",
+            "list": ""
         },
         {
             "id": 5,
@@ -44,7 +52,9 @@
             "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
             "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
             "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
-            "genre": "Animation"
+            "genre": "Animation",
+            "likes": "0",
+            "list": ""
         },
         {
             "id": 6,
@@ -53,7 +63,9 @@
             "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
             "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
             "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
-            "genre": "Animation"
+            "genre": "Animation",
+            "likes": "0",
+            "list": ""
         },
         {
             "id": 7,
@@ -62,7 +74,9 @@
             "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
             "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
             "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
-            "genre": "Fantasy"
+            "genre": "Fantasy",
+            "likes": "0",
+            "list": ""
         },
         {
             "id": 8,
@@ -71,7 +85,9 @@
             "description": "After Ferdinand, a bull with a big heart, is mistaken for a dangerous beast, he is captured and torn from his home. Determined to return to his family, he rallies a misfit team on the ultimate adventure.",
             "actors": "John Cena, Kate McKinnon, Bobby Cannavale",
             "posterURL": "https://images-na.ssl-images-amazon.com/images/I/81lsDsSJCRL._AC_SL1500_.jpg",
-            "genre": "Animation"
+            "genre": "Animation",
+            "likes": "0",
+            "list": ""
         }
     ]
 }

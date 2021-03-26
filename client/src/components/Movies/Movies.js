@@ -7,6 +7,7 @@ import Genres from './Genres'
 import style from './Movies.module.css'
 import { Link } from 'react-router-dom'
 
+
 class Movies extends Component {
     constructor(props) {
         super(props);
@@ -33,9 +34,13 @@ class Movies extends Component {
 
                 this.setState({ movies: res, currentGenre: genre })
             })
+
+        
     }
     render() {
+        let showMovies = this.state.movies.length;
         return (
+
             <main>
                 <ul>
                 <h1 className={style.movies}>Movies</h1>
@@ -43,8 +48,11 @@ class Movies extends Component {
                 </ul>
                 <Genres />
                 <div className={style.movies}>
-                <ul> {this.state.movies.map(x =>
+                <ul>                 
+                {this.state.movies.map(x =>
                 <Movie key={x.id} {...x}/>)}
+                    {!showMovies && <><h2>There are no movies of this genre yet!</h2> 
+                    <img className={style.noentries} src="/img/no-entries.png" alt="sad emoji"/></>}
                 </ul>
              </div>
         </main>
