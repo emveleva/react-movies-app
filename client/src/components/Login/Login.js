@@ -1,24 +1,22 @@
-import { useContext } from "react";
-import { Redirect } from "react-router-dom";
-import { AuthContext } from "../../config/Auth";
-import firebaseConfig from "../../config/config.js";
+import { useAuth } from "../../contexts/AuthContext"
+import { Link, useHistory } from "react-router-dom"
 
 const Login = () => {
-  let isLogged = false;
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const { email, password } = e.target.elements;
+  const { login } = useAuth()
+  const history = useHistory()
 
-        try {
-          firebaseConfig.auth().signInWithEmailAndPassword(email.value, password.value);
-          isLogged = true;
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      if (isLogged) {
-         <Redirect to="/dashboard" />;
-      }
+  async function handleSubmit(e) {
+    e.preventDefault()
+    const { email, password } = e.target.elements;
+  
+    try {
+      await login(email.value, password.value)
+      history.push("/")
+    } catch {
+      console.log("Failed to log in")
+    }
+  }
+  
     return (
         <main className='form'>
             <h1>Login</h1>

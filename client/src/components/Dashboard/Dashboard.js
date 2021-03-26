@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import style from './Dashboard.module.css';
 import { useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from "../../config/Auth";
 
 function Dashboard() {
     return (

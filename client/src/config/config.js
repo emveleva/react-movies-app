@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-const firebaseConfig = firebase.initializeApp({
+const app = firebase.initializeApp({
     apiKey: "AIzaSyBW5Z8uTZzgmYbokIAtG7SwOZUSdKZiRBM",
     authDomain: "react-app-121da.firebaseapp.com",
     projectId: "react-app-121da",
@@ -10,4 +10,5 @@ const firebaseConfig = firebase.initializeApp({
     appId: "1:743250676119:web:fa27e1cf320363bb1b9cd2"
   });
 
-export default firebaseConfig;
+  export const auth = app.auth()
+  export default app

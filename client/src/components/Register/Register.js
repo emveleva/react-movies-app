@@ -1,21 +1,26 @@
-import {useState} from "react";
-import { Redirect } from "react-router-dom";
-import firebaseConfig from "../../config/config";
+import React, { useState } from "react"
+import { useAuth } from "../../contexts/AuthContext"
+import { useHistory } from "react-router-dom"
 
-function Register() {
-    const [currentUser, setCurrentUser] = useState(null);    
-    const handleSubmit = (e) => {
-      e.preventDefault();    
-      const { email, password } = e.target.elements;
-      try {
-        firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value);      
-        setCurrentUser(true);
-      } catch (error) {
-        alert(error);
-      }
-    };
-    if (currentUser) {
-        return <Redirect to="/dashboard" />;
+export default function Register() {
+  const { register } = useAuth()
+  const history = useHistory()
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    const { email, password, rePassword } = e.target.elements;
+    if (password.value !== rePassword.value) {
+      return console.log("Passwords do not match")
+    }
+
+    try {
+      await register(email.value, password.value)
+      history.push("/")
+    } catch {
+      console.log("Failed to create an account")
+    }
+
+  
     }
     return (
         <main className='form'>
@@ -36,12 +41,11 @@ function Register() {
                 </div>
                 <div>
                     <p class="message"></p>
-                    <button>Register</button>
+                    <button type="submit">Register</button>
                 </div>
             </form>
         </main>
     );
     }
-    
-    export default Register;
+
 

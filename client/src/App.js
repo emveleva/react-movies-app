@@ -11,6 +11,8 @@ import Watched from './components/Dashboard/Watched'
 import Movies from './components/Movies'
 import AddNew from './components/Movies/AddNew'
 import MovieDetails from './components/Movie/MovieDetails'
+import { AuthProvider } from "./contexts/AuthContext"
+import PrivateRoute from "./components/PrivateRoute"
 
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom'
@@ -22,6 +24,7 @@ function App() {
   return (
     <div className="app">
             <Router>
+            <AuthProvider>
       <Header />
 
         <Switch>
@@ -34,9 +37,10 @@ function App() {
           <Route path='/watched' component={Watched} />
           <Route path='/login' exact component={Login} />
           <Route path='/logout' component={Logout} />
-          <Route path='/dashboard' component={Dashboard} />
+          <PrivateRoute path='/dashboard' component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
+        </AuthProvider>
       </Router>
       
       <Footer />
