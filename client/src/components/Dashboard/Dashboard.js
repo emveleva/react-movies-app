@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import style from './Dashboard.module.css';
-import { useContext } from "react";
-import { Redirect } from "react-router-dom";
 
 function Dashboard() {
     return (

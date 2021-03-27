@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../config/config"
+import { auth } from "../config/config";
+
+// const DB = app.database();
 
 const AuthContext = React.createContext()
 
@@ -21,6 +23,10 @@ export function AuthProvider({ children }) {
 
   function logout() {
     return auth.signOut()
+  }
+
+  function create( title, year, description, actors, posterURL, genre){
+
   }
 
   useEffect(() => {

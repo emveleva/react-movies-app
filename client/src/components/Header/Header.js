@@ -3,7 +3,7 @@ import NavBar from '../Header/NavBar'
 import style from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from "../../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 function Header() {
   const { currentUser, logout } = useAuth()

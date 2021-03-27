@@ -10,7 +10,7 @@ import ToWatch from './components/Dashboard/ToWatch'
 import Watched from './components/Dashboard/Watched'
 import Movies from './components/Movies'
 import AddNew from './components/Movies/AddNew'
-import MovieDetails from './components/Movie/MovieDetails'
+import MovieDetails from './components/MovieTemplate/MovieDetails'
 import { AuthProvider } from "./contexts/AuthContext"
 import PrivateRoute from "./components/PrivateRoute"
 
@@ -32,11 +32,11 @@ function App() {
           <Route path='/register' component={Register} />
           <Route path="/movies/details/:movieId" component={MovieDetails} />
           <Route path='/movies/:genre' component={Movies} />
-          <Route path='/add-new' component={AddNew} />
-          <Route path='/to-watch' component={ToWatch} />
-          <Route path='/watched' component={Watched} />
+          <PrivateRoute path='/add-new' component={AddNew} />
+          <PrivateRoute path='/to-watch' component={ToWatch} />
+          <PrivateRoute path='/watched' component={Watched} />
           <Route path='/login' exact component={Login} />
-          <Route path='/logout' component={Logout} />
+          <PrivateRoute path='/logout' component={Logout} />
           <PrivateRoute path='/dashboard' component={Dashboard} />
           <Route component={NotFound} />
         </Switch>

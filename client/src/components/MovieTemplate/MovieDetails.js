@@ -19,7 +19,7 @@ const MovieDetails = ({
             <ul>
                 <div>
             <h2>{movie.title}</h2>
-            <img src={movie.posterURL} />
+            <img src={movie.posterURL} alt="movie poster" />
             </div>
             <div>
             <p><span>Year:</span> {movie.year}</p>

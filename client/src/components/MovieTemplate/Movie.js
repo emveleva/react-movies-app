@@ -7,8 +7,8 @@ const Movie = ({
     description,
     actors,
     posterURL,
-    likes,
-    genre
+    genre, 
+    user
 }) => {
 
     return (

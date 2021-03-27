@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import style from './ToWatch.module.css';
 
 function ToWatch() {

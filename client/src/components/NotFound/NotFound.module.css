@@ -1,6 +1,6 @@
 .notFound {
     position: relative;
-    top: 10%;
+    padding-top: 100px;
 }
 .notFound img {
     height: 300px;

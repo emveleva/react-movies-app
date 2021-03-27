@@ -1,8 +1,11 @@
 import { useAuth } from "../../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import ErrorHandler from "../ErrorHandler/ErrorHandler"
+import { useState } from 'react';
 
 const Login = () => {
   const { login } = useAuth()
+  const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory()
 
   async function handleSubmit(e) {
@@ -12,14 +15,19 @@ const Login = () => {
     try {
       await login(email.value, password.value)
       history.push("/")
-    } catch {
-      console.log("Failed to log in")
-    }
+    } catch (error) {
+        setErrorMessage(error.message);
+      }
+  
+    
   }
   
     return (
+      <>
+        <ErrorHandler>{errorMessage}</ErrorHandler>
         <main className='form'>
-            <h1>Login</h1>
+
+            <h1 className="title">Login</h1>
 
         <form onSubmit={handleSubmit}>
             <div>
@@ -36,6 +44,7 @@ const Login = () => {
             </div>
         </form>
         </main>
+        </>
     );
     }
     

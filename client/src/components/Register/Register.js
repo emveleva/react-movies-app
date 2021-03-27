@@ -1,30 +1,35 @@
 import React, { useState } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
+import ErrorHandler from "../ErrorHandler/ErrorHandler"
 
 export default function Register() {
   const { register } = useAuth()
   const history = useHistory()
+  const [errorMessage, setErrorMessage] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault()
     const { email, password, rePassword } = e.target.elements;
     if (password.value !== rePassword.value) {
-      return console.log("Passwords do not match")
+      setErrorMessage("Passwords do not match");
+      return;
     }
 
     try {
       await register(email.value, password.value)
       history.push("/")
-    } catch {
-      console.log("Failed to create an account")
+    } catch (error) {
+      setErrorMessage(error.message);
     }
 
   
     }
     return (
+      <>
+      <ErrorHandler>{errorMessage}</ErrorHandler>
         <main className='form'>
-            <h1>Register</h1>
+            <h1 className="title">Register</h1>
 
             <form onSubmit={handleSubmit}>
                 <div>
@@ -45,6 +50,7 @@ export default function Register() {
                 </div>
             </form>
         </main>
+        </>
     );
     }
 

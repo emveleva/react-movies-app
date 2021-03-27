@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import * as movieService from '../../services/movieService';
 
-import Movie from '../Movie/Movie';
+import Movie from '../MovieTemplate/Movie';
 import Genres from './Genres'
 import style from './Movies.module.css'
 import { Link } from 'react-router-dom'
@@ -38,7 +38,7 @@ class Movies extends Component {
         
     }
     render() {
-        let showMovies = this.state.movies.length;
+        let showMovies = this.state.movies.length || 0;
         return (
 
             <main>

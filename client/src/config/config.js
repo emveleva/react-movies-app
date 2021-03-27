@@ -4,6 +4,7 @@ import "firebase/auth";
 const app = firebase.initializeApp({
     apiKey: "AIzaSyBW5Z8uTZzgmYbokIAtG7SwOZUSdKZiRBM",
     authDomain: "react-app-121da.firebaseapp.com",
+    databaseURL: "https://react-app-121da-default-rtdb.firebaseio.com/",
     projectId: "react-app-121da",
     storageBucket: "react-app-121da.appspot.com",
     messagingSenderId: "743250676119",
@@ -11,4 +12,4 @@ const app = firebase.initializeApp({
   });
 
   export const auth = app.auth()
-  export default app
+  export default app;
