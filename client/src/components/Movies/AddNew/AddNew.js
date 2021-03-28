@@ -5,11 +5,13 @@ import app from "../../../config/config";
 import { useAuth } from "../../../contexts/AuthContext"
 import 'firebase/firestore';
 import { useState } from "react";
+import { useHistory } from "react-router-dom"
 
 const DB = app.firestore();
 
 
 function AddNew() {
+    const history = useHistory()
     const [genre, setGenre] = useState('Select genre...');
     function onSelectChange(e) {
         setGenre(e.target.value);
@@ -28,7 +30,9 @@ function AddNew() {
                 posterURL: posterURL.value,
                 genre,
                 user: currentUser.uid,
-          }).then(createdMovie => console.log(createdMovie))
+          }).then(createdMovie => 
+            history.push(`/movies/details/${createdMovie.uid}`))
+
           
           .catch(error => 
                      console.log(error))

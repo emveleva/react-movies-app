@@ -2,6 +2,10 @@ import React, { useState } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import ErrorHandler from "../ErrorHandler/ErrorHandler"
+import app from "../../config/config"
+import "firebase/analytics"
+
+const analytics = app.analytics()
 
 export default function Register() {
   const { register } = useAuth()
@@ -18,6 +22,7 @@ export default function Register() {
 
     try {
       await register(email.value, password.value)
+      analytics.setUserProperties({toWatch: [], watched: []});
       history.push("/")
     } catch (error) {
       setErrorMessage(error.message);

@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from 'react';
+import { Component } from 'react';
 
 import * as movieService from '../../services/movieService';
 
@@ -6,13 +6,9 @@ import Movie from '../MovieTemplate/Movie';
 import Genres from './Genres'
 import style from './Movies.module.css'
 import { Link } from 'react-router-dom'
-import 'firebase/firestore';
-import app from "../../config/config";
 
 
-const DB = app.firestore();
-
-class Movies extends Component {
+class Movies2 extends Component {
     constructor(props) {
         super(props);
 
@@ -23,11 +19,12 @@ class Movies extends Component {
     }
 
     componentDidMount() {
-        DB.collection("movies")
+        db.collection("users")
           .get()
-          .then(movies => {
-            const data = movies.docs.map(movie => movie.data());
-            this.setState({ movies: data });
+          .then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            console.log(data);
+            this.setState({ users: data });
           });
       }
     componentDidUpdate(prevProps) {
@@ -36,29 +33,27 @@ class Movies extends Component {
             return;
         }
 
-        DB.collection("movies")
-          .get()
-          .then(movies => {
-            const data = movies.docs.map(movie => movie.data());
-            this.setState({ movies: data });
-            console.log(movies);
-            const newMovies = Object.values(movies).filter(movie => movie.genre == genre)
+        movieService.getAll(genre)
+            .then(res => {
+
+                this.setState({ movies: res, currentGenre: genre })
+            })
+
         
-        });
     }
     render() {
-
+        let showMovies = this.state.movies.length || 0;
         return (
 
             <main>
                 <ul>
                 <h1 className={style.movies}>Movies</h1>
-                <li>Search:</li>   
-                <Link to='/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>     
+                <Link to='/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>                
                 </ul>
                 <Genres />
                 <div className={style.movies}>
                 <ul>                 
+
 <h2>There are no movies of this genre yet!</h2> 
                     <img className={style.noentries} src="/img/no-entries.png" alt="sad emoji"/>
                 </ul>
@@ -66,7 +61,6 @@ class Movies extends Component {
         </main>
         );
     }
-    
-                    }
+}
 
-export default Movies;
+export default Movies2;
