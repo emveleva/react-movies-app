@@ -32,19 +32,10 @@ const userSchema = new mongoose.Schema({
         }
     },
 
-    accountAmount: {
-        type: Number, 
-        default: 0,
-        min: [0, 'Amount should be a positive number']
-
+    toWatch: []
     },
 
-    expenses: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'User'
-        }
-    ]
+    watched: []
 });
 
 userSchema.pre('save', function(next){
