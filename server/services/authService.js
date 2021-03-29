@@ -1,40 +1,26 @@
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const User = require('../Models/User');
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('../config/config')
-
-
-const register = (username, password) => {
-    // possible check with database for existing user
-
-    let user = new User({
-        username,
-        password
-    });
-
-    return user.save()
-}
-
-const login = async (username, password) => {
-    let user = await User.findOne({
-        username
-    })
-    if (!user) throw ({
-        message: 'No such user exists',
-        status: 404
-    })
-    let areEqual = await bcrypt.compare(password, user.password)
-
-    if (!areEqual) throw ({
-        message: 'Invalid password',
-        status: 404
-    })
-    
-    let token = jwt.sign({_id: user._id, username: user.username}, SECRET)
-    return token;
-}
+const {SECRET, SALT_ROUNDS} = require('../config/config');
 
 module.exports = {
-    register,
-    login
+    register: 
+        async ({username, password, rePassword}) => {
+            if (password !== rePassword) 
+                throw {message: 'The passwords should match!'}
+            let userAlreadyCreated = await User.findOne({username});
+            if (userAlreadyCreated) 
+                throw {message: 'User already exists!'};
+            let hash = await bcrypt.hash(password, SALT_ROUNDS);
+            let user = await new User({username, password: hash}).save();
+            return jwt.sign({_id: user._id, username: user.username}, SECRET);
+    },
+    login: 
+        async ({username, password}) => {
+            let userExists = await User.findOne({username});
+            let notMatch = await bcrypt.compare(password, user.password);
+            if (!userExists || !notMatch) 
+                throw {message: 'Wrong username or password.'};
+            return jwt.sign({_id: user._id, username: user.username}, SECRET);
+    }
 }

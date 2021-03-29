@@ -24,11 +24,15 @@ function App() {
   return (
     <div className="app">
             <Router>
-            <AuthProvider>
-      <Header />
+                    <Header />
 
-        <Switch>
+                    <AuthProvider>
+          <Switch>
+
+        
           <Route path='/' exact component={Home} /> 
+          
+        
           <Route path='/register' component={Register} />
           <Route path="/movies/details/:movieId" component={MovieDetails} />
           <Route path='/movies/:genre' component={Movies} />

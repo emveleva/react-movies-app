@@ -65,3 +65,8 @@ ul {
 .title {
   padding-top: 40px;
 }
+
+h2 {
+  width: 500px;
+  margin: 0 auto;
+}

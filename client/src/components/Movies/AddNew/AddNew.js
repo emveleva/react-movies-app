@@ -1,48 +1,47 @@
 import style from './AddNew.module.css'
 import Movie from '../../MovieTemplate/Movie';
 import * as movieService from '../../../services/movieService';
-import app from "../../../config/config";
 import { useAuth } from "../../../contexts/AuthContext"
-import 'firebase/firestore';
+
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
 
-const DB = app.firestore();
+
 
 
 function AddNew() {
-    const history = useHistory()
-    const [genre, setGenre] = useState('Select genre...');
-    function onSelectChange(e) {
-        setGenre(e.target.value);
-      }
+    // const history = useHistory()
+    // const [genre, setGenre] = useState('Select genre...');
+    // function onSelectChange(e) {
+    //     setGenre(e.target.value);
+    //   }
 
-    const { currentUser } = useAuth()
+    // const { currentUser } = useAuth()
 
-    async function handleSubmit(e) {
-        e.preventDefault()
-        const { title, year, description, actors, posterURL } = e.target.elements;
-        const res = await DB.collection('movies').add({
-                title: title.value,
-                year: year.value, 
-                actors: actors.value, 
-                description: description.value, 
-                posterURL: posterURL.value,
-                genre,
-                user: currentUser.uid,
-          }).then(createdMovie => 
-            history.push(`/movies/details/${createdMovie.uid}`))
+    // async function handleSubmit(e) {
+    //     e.preventDefault()
+    //     const { title, year, description, actors, posterURL } = e.target.elements;
+    //     const res = await DB.collection('movies').add({
+    //             title: title.value,
+    //             year: year.value, 
+    //             actors: actors.value, 
+    //             description: description.value, 
+    //             posterURL: posterURL.value,
+    //             genre,
+    //             user: currentUser.uid,
+    //       }).then(createdMovie => 
+    //         history.push(`/movies/details/${createdMovie.uid}`))
 
           
-          .catch(error => 
-                     console.log(error))
-        }
+    //       .catch(error => 
+    //                  console.log(error))
+    //     }
         
     return (
         <main className='form addnew'>
             <h1>Add New Movie</h1>
             <div className={style.addnew}>
-            <form onSubmit={handleSubmit}>
+            <form >
                 <div className={style.leftSide}>
                     <p>Title:</p>
                     <input type="title" placeholder="Title" name="title" required />
@@ -60,7 +59,7 @@ function AddNew() {
             
                     <p>Genre:</p>
                     {/* <input type="genre" placeholder="Action" name="genre" /> */}
-                    <select name="genre"  placeholder="Select genre..." value={genre} onChange={onSelectChange} required>
+                    <select name="genre"  placeholder="Select genre..." value="genre" required>
                         <option value="Select genre..." selected disabled hidden>Select genre...</option>
                         <option value="Action">Action</option>
                         <option value="Adventure">Adventure</option>

@@ -10,16 +10,16 @@ const Login = () => {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    const { email, password } = e.target.elements;
+    const { username, password } = e.target.elements;
   
     try {
-      await login(email.value, password.value)
+      await login(username.value, password.value)
       history.push("/")
     } catch (error) {
         setErrorMessage(error.message);
       }
   
-    
+  
   }
   
     return (
@@ -31,8 +31,8 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
             <div>
-                <p>E-mail:</p>
-                <input type="email" placeholder="Email..." name="email" />
+                <p>Username:</p>
+                <input type="username" placeholder="Username" name="username" />
             </div>
 
             <div>

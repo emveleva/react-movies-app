@@ -1,35 +1,45 @@
-import React, { useState } from "react"
-import { useAuth } from "../../contexts/AuthContext"
+import React, {useState, useContext} from 'react';
+import { AuthContext } from "../../contexts/AuthContext"
+import {Link, Redirect} from 'react-router-dom';
 import { useHistory } from "react-router-dom"
 import ErrorHandler from "../ErrorHandler/ErrorHandler"
-import app from "../../config/config"
-import "firebase/analytics"
-
-const analytics = app.analytics()
 
 export default function Register() {
-  const { register } = useAuth()
-  const history = useHistory()
-  const [errorMessage, setErrorMessage] = useState('');
+  const [user, setUser] = useContext(AuthContext)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState(false)
+  const [repeatPassword, setRepeatPassword] = useState('')
 
-  async function handleSubmit(e) {
-    e.preventDefault()
-    const { email, password, rePassword } = e.target.elements;
-    if (password.value !== rePassword.value) {
-      setErrorMessage("Passwords do not match");
-      return;
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      return fetch('http://localhost:4003/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, password, rePassword})
+    }).then(res => res.json())
+        .then((res) => {
+            if (res.message) throw new Error(res.message);
+            setUser({_id: res.user._id, username: res.user.username})
+        }).catch(err => {
+            setErrorMessage(err.message)
+        });
     }
 
-    try {
-      await register(email.value, password.value)
-      analytics.setUserProperties({toWatch: [], watched: []});
-      history.push("/")
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
 
-  
-    }
+  const updateUsername = (e) => {
+      setUsername(e.target.value)
+  }
+  const updatePassword = (e) => {
+      setPassword(e.target.value)
+  }
+  const updateRepeatPassword = (e) => {
+      setRepeatPassword(e.target.value)
+  }
+
+  if (user.username !== '') {
+      return <Redirect to="/"/>;
+  }
     return (
       <>
       <ErrorHandler>{errorMessage}</ErrorHandler>
@@ -38,19 +48,18 @@ export default function Register() {
 
             <form onSubmit={handleSubmit}>
                 <div>
-                    <p>E-mail:</p>
-                    <input type="email" placeholder="Email..." name="email" />
+                    <p>Username:</p>
+                    <input type="username" placeholder="Username" name="username" value={username} onChange={updateUsername} />
                 </div>
                 <div>
                     <p>Password:</p>
-                    <input type="password" placeholder="Password" name="password" />
+                    <input type="password" placeholder="Password" name="password" value={password} onChange={updatePassword} />
                 </div>
                 <div>
                     <p>Repeat Password:</p>
-                    <input type="password" placeholder="Re-password" name="rePassword" />
+                    <input type="password" placeholder="Re-password" name="rePassword" value={repeatPassword} onChange={updateRepeatPassword}/>
                 </div>
                 <div>
-                    <p class="message"></p>
                     <button type="submit">Register</button>
                 </div>
             </form>

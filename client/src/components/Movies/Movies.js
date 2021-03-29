@@ -6,11 +6,7 @@ import Movie from '../MovieTemplate/Movie';
 import Genres from './Genres'
 import style from './Movies.module.css'
 import { Link } from 'react-router-dom'
-import 'firebase/firestore';
-import app from "../../config/config";
 
-
-const DB = app.firestore();
 
 class Movies extends Component {
     constructor(props) {
@@ -23,12 +19,7 @@ class Movies extends Component {
     }
 
     componentDidMount() {
-        DB.collection("movies")
-          .get()
-          .then(movies => {
-            const data = movies.docs.map(movie => movie.data());
-            this.setState({ movies: data });
-          });
+        
       }
     componentDidUpdate(prevProps) {
         const genre = this.props.match.params.genre;
@@ -36,15 +27,6 @@ class Movies extends Component {
             return;
         }
 
-        DB.collection("movies")
-          .get()
-          .then(movies => {
-            const data = movies.docs.map(movie => movie.data());
-            this.setState({ movies: data });
-            console.log(movies);
-            const newMovies = Object.values(movies).filter(movie => movie.genre == genre)
-        
-        });
     }
     render() {
 
@@ -53,7 +35,7 @@ class Movies extends Component {
             <main>
                 <ul>
                 <h1 className={style.movies}>Movies</h1>
-                <li>Search:</li>   
+                {/* <li className={style.search}>Search:<input type="search" name="search" /></li>    */}
                 <Link to='/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>     
                 </ul>
                 <Genres />

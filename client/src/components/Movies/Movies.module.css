@@ -1,5 +1,5 @@
 .movies li {
-    list-style: none;
+    list-style-type: none;
     display: inline-block;
     color: white;
     text-align: center;
@@ -14,7 +14,7 @@
     padding: 0 0 50px 0;
     margin: 0 auto;
     margin-bottom: 50px;
-    list-style: none;
+    list-style-type: none;
     min-height: 270px;
 }
 
@@ -71,3 +71,29 @@ img {
     margin: 0 auto;
     color: white;
 }
+
+/* .search {
+    background-color: #df2935;
+    border: none;
+    color: white;
+    padding: 8px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 25px;
+    outline: none;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+.search input {
+    background-color:#ffffff;
+    border: none;
+    color: #df2935;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 25px;
+    outline: none;
+    width: 200px;
+    display: inline;
+} */
