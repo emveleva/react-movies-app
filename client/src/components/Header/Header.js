@@ -1,15 +1,24 @@
-import React from "react"
+import React, { useContext} from "react"
 import NavBar from '../Header/NavBar'
 import style from './Header.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect, Link, useHistory } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext'
 
+export default function Header() {
+  const [user, setUser] = useContext(AuthContext)
+  const history = useHistory();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
+    return fetch('http://localhost:4003/logout')
+        .then(res => res.json())
+        .then(res => {
+          setUser({username: '', _id: ''});
+          history.push("/logout");
+        }).catch(err => console.log(err))
+        
 
-function Header() {
-
-
-
-  
+}
     return (
       <div className={style.header}>
           <ul className={style.leftSide}>
@@ -18,15 +27,12 @@ function Header() {
           </ul>
           <ul className={style.rightSide}>
           <li><button><NavLink to='/'><NavBar>Home</NavBar></NavLink></button></li>
-          <li><NavLink to='/movies/all'><NavBar>Movies</NavBar></NavLink></li>
-            {/* <li><NavLink to='/dashboard'><NavBar>Dashboard</NavBar></NavLink></li> */}
-            {/* <li><NavBar>Logout</NavBar></li> */}
-            <li><NavLink to='/register'><NavBar>Register</NavBar></NavLink></li>
-            <li><NavLink to='/login'><NavBar>Login</NavBar></NavLink></li>
+          {user.username && <><li><NavLink to='/movies/all'><NavBar>Movies</NavBar></NavLink></li>
+            <li><NavLink to='/dashboard'><NavBar>Dashboard</NavBar></NavLink></li>
+            <li><NavBar><NavLink onClick={handleSubmit}>Logout</NavLink></NavBar></li></>}
+            {!user.username && <><li><NavLink to='/register'><NavBar>Register</NavBar></NavLink></li>
+            <li><NavLink to='/login'><NavBar>Login</NavBar></NavLink></li></>}
           </ul>
       </div>
     );
     }
-
-
-export default Header

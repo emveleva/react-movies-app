@@ -1,26 +1,34 @@
-import { useAuth } from "../../contexts/AuthContext"
-import { useHistory } from "react-router-dom"
+import React, {useState, useContext} from 'react';
+import { AuthContext } from "../../contexts/AuthContext"
+import { Redirect} from 'react-router-dom';
 import ErrorHandler from "../ErrorHandler/ErrorHandler"
-import { useState } from 'react';
 
-const Login = () => {
-  const { login } = useAuth()
+export default function Login() {
   const [errorMessage, setErrorMessage] = useState('');
-  const history = useHistory()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [user, setUser] = useContext(AuthContext)
 
-  async function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    const { username, password } = e.target.elements;
-  
-    try {
-      await login(username.value, password.value)
-      history.push("/")
-    } catch (error) {
-        setErrorMessage(error.message);
-      }
-  
+
+    return fetch(`http://localhost:4003/login`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({username, password})
+  }).then(res => res.json())
+      .then((resp) => {
+          if (resp.message) throw new Error(resp.message);
+          setUser({_id: resp.user._id, username: resp.user.username})
+      }).catch(err => {
+          console.log(err)
+          setErrorMessage(err.message)
+      });
   
   }
+  if (user.username !== '') {
+    return <Redirect to="/"/>;
+}
   
     return (
       <>
@@ -32,15 +40,19 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
             <div>
                 <p>Username:</p>
-                <input type="username" placeholder="Username" name="username" />
+                <input
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username" />
             </div>
 
             <div>
                 <p>Password:</p>
-                <input type="password" placeholder="Password..." name="password" />
+                <input type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password" />
             </div>
             <div> 
-                <button>Login</button>
+                <button type="submit">Login</button>
             </div>
         </form>
         </main>
@@ -48,5 +60,4 @@ const Login = () => {
     );
     }
     
-    export default Login
 

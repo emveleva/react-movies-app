@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react';
 import { AuthContext } from "../../contexts/AuthContext"
-import {Link, Redirect} from 'react-router-dom';
-import { useHistory } from "react-router-dom"
+import { Redirect } from 'react-router-dom';
 import ErrorHandler from "../ErrorHandler/ErrorHandler"
 
 export default function Register() {
@@ -9,7 +8,7 @@ export default function Register() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(false)
-  const [repeatPassword, setRepeatPassword] = useState('')
+  const [rePassword, setRePassword] = useState('')
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -26,19 +25,9 @@ export default function Register() {
         });
     }
 
-
-  const updateUsername = (e) => {
-      setUsername(e.target.value)
-  }
-  const updatePassword = (e) => {
-      setPassword(e.target.value)
-  }
-  const updateRepeatPassword = (e) => {
-      setRepeatPassword(e.target.value)
-  }
-
   if (user.username !== '') {
-      return <Redirect to="/"/>;
+      console.log(user.username)
+      return <Redirect to="/" />;
   }
     return (
       <>
@@ -49,15 +38,23 @@ export default function Register() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <p>Username:</p>
-                    <input type="username" placeholder="Username" name="username" value={username} onChange={updateUsername} />
+                    <input 
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username" />
                 </div>
                 <div>
                     <p>Password:</p>
-                    <input type="password" placeholder="Password" name="password" value={password} onChange={updatePassword} />
+                    <input 
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password" />
                 </div>
                 <div>
                     <p>Repeat Password:</p>
-                    <input type="password" placeholder="Re-password" name="rePassword" value={repeatPassword} onChange={updateRepeatPassword}/>
+                    <input 
+                    type="password"
+                    onChange={(e) => setRePassword(e.target.value)}
+                    placeholder="Repeat password"/>
                 </div>
                 <div>
                     <button type="submit">Register</button>

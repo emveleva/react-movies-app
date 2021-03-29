@@ -23,24 +23,19 @@ import './App.css';
 function App() {
   return (
     <div className="app">
-            <Router>
-                    <Header />
-
-                    <AuthProvider>
-          <Switch>
-
-        
-          <Route path='/' exact component={Home} /> 
-          
-        
+      <Router>
+        <AuthProvider>
+        <Header />
+        <Switch>
+          <Route path='/' exact component={Home} />        
           <Route path='/register' component={Register} />
-          <Route path="/movies/details/:movieId" component={MovieDetails} />
-          <Route path='/movies/:genre' component={Movies} />
+          <PrivateRoute path="/movies/details/:movieId" component={MovieDetails} />
+          <PrivateRoute path='/movies/:genre' component={Movies} />
           <PrivateRoute path='/add-new' component={AddNew} />
           <PrivateRoute path='/to-watch' component={ToWatch} />
           <PrivateRoute path='/watched' component={Watched} />
           <Route path='/login' exact component={Login} />
-          <PrivateRoute path='/logout' component={Logout} />
+          <Route path='/logout' component={Logout} />
           <PrivateRoute path='/dashboard' component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
