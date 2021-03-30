@@ -3,8 +3,7 @@ import Movie from '../../MovieTemplate/Movie';
 import * as movieService from '../../../services/movieService';
 import { AuthContext } from "../../../contexts/AuthContext"
 import ErrorHandler from "../../ErrorHandler/ErrorHandler"
-import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom"
+import { useState, useContext, Redirect } from "react";
 
 function AddNew() {
     const [user, setUser] = useContext(AuthContext);
@@ -15,50 +14,31 @@ function AddNew() {
     const [posterURL, setPosterURL] = useState('');
     const [genre, setGenre] = useState('Select genre...');
     const [errorMessage, setErrorMessage] = useState('');
+    const [movieId, setMovieId] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let userID = user._id
+        let userId = user._id
         return fetch('http://localhost:4003/movies/add-new', {
             method: 'POST',
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
                },
-            body: JSON.stringify({title, year, description, actors, posterURL, genre, user: userID}) 
+            body: JSON.stringify({title, year, description, actors, posterURL, genre, user: userId}) 
         }).then(res => res.json())
         .then((res) => {
             if (res.message) throw new Error(res.message);
+            setMovieId(res._id)
         }).catch(err => {
             setErrorMessage(err.message)
         });
-    
     }
-    // function onSelectChange(e) {
-    //     setGenre(e.target.value);
-    //   }
 
-    // const { currentUser } = useAuth()
-
-    // async function handleSubmit(e) {
-    //     e.preventDefault()
-    //     const { title, year, description, actors, posterURL } = e.target.elements;
-    //     const res = await DB.collection('movies').add({
-    //             title: title.value,
-    //             year: year.value, 
-    //             actors: actors.value, 
-    //             description: description.value, 
-    //             posterURL: posterURL.value,
-    //             genre,
-    //             user: currentUser.uid,
-    //       }).then(createdMovie => 
-    //         history.push(`/movies/details/${createdMovie.uid}`))
-
-          
-    //       .catch(error => 
-    //                  console.log(error))
-    //     }
-        
+    if (movieId !== '') {
+        console.log(movieId)
+        return <Redirect to={'/details/' + movieId} />;
+    }
     return (
         <>
         <ErrorHandler>{errorMessage}</ErrorHandler>

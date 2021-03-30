@@ -4,10 +4,13 @@ module.exports = {
     getAll: (genre) => {
         if (genre == "all") return Movie
             .find().lean();
-        if (genre !== "all") return Movie
-            .find(genre).lean();
+        if (genre !== "all") { 
+            let movies = Movie.find({genre}).lean();
+            console.log(movies);
+            return movies;
+        }
     },
-    getOne: (title) => Movie.findOne({title}).lean(),
+    getOne: (movieId) => Movie.findOne({movieId}).lean(),
 
     addNew: async ({...movieInfo}) => {
         if (movieInfo.title == '') throw {message: 'Movie title cannot be empty.'};
@@ -15,7 +18,7 @@ module.exports = {
         if (movieInfo.description == '') throw {message: 'Movie description cannot be empty.'};
         if (movieInfo.actors == '') throw {message: 'Movie actors cannot be empty.'};
         if (movieInfo.poster == '') throw {message: 'Movie poster cannot be empty.'};
-        if (movieInfo.genre == '') throw {message: 'Movie genre cannot be empty.'};
+        if (movieInfo.genre == 'Select genre...') throw {message: 'Movie genre must be selected.'};
         let urlPattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
         let movieTitle = movieInfo.title;
         if (movieTitle === Movie.findOne(movieTitle)) throw {message: 'There is already a movie with the same title.'}
