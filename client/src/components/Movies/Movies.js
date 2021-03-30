@@ -36,7 +36,7 @@ class Movies extends Component {
                 <ul>
                 <h1 className={style.movies}>Movies</h1>
                 {/* <li className={style.search}>Search:<input type="search" name="search" /></li>    */}
-                <Link to='/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>     
+                <Link to='/movies/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>     
                 </ul>
                 <Genres />
                 <div className={style.movies}>

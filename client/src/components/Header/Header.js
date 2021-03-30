@@ -29,7 +29,7 @@ const handleSubmit = (e) => {
           <li><button><NavLink to='/'><NavBar>Home</NavBar></NavLink></button></li>
           {user.username && <><li><NavLink to='/movies/all'><NavBar>Movies</NavBar></NavLink></li>
             <li><NavLink to='/dashboard'><NavBar>Dashboard</NavBar></NavLink></li>
-            <li><NavBar><NavLink onClick={handleSubmit}>Logout</NavLink></NavBar></li></>}
+            <li><NavLink to='' onClick={handleSubmit}><NavBar>Logout</NavBar></NavLink></li></>}
             {!user.username && <><li><NavLink to='/register'><NavBar>Register</NavBar></NavLink></li>
             <li><NavLink to='/login'><NavBar>Login</NavBar></NavLink></li></>}
           </ul>

@@ -4,11 +4,11 @@ import { Redirect } from 'react-router-dom';
 import ErrorHandler from "../ErrorHandler/ErrorHandler"
 
 export default function Register() {
-  const [user, setUser] = useContext(AuthContext)
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [errorMessage, setErrorMessage] = useState(false)
-  const [rePassword, setRePassword] = useState('')
+  const [user, setUser] = useContext(AuthContext);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [rePassword, setRePassword] = useState('');
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -39,6 +39,7 @@ export default function Register() {
                 <div>
                     <p>Username:</p>
                     <input 
+                    type="username"
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Username" />
                 </div>
