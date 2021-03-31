@@ -31,5 +31,8 @@ module.exports = {
         console.log(movieId)
         return movieId;
     },
+    editMovie: (movieId, editedMovieInfo) => {
+        Movie.updateOne({_id: movieId}, editedMovieInfo);
+    } 
 }
 

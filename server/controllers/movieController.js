@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const isAuth = require('../middlewares/isAuth');
-const { addNew, getAll, getOne } = require('../services/movieService')
+const { addNew, getAll, getOne, editMovie } = require('../services/movieService')
 
 
 router.post('/add-new', (req, res) => {
@@ -31,12 +31,16 @@ router.get('/details/:movieId', (req, res) => {
 });
 
 
-// router.post('/refill', isAuthenticated, (req, res) => {
-//     let user = req.user;
+router.post('/details/edit/:movieId', (req, res) => {
+    let movieId = req.params.movieId;
+    let editedMovieInfo = req.body;
 
-//     refill(req.body.refill, user._id)
-//         .then(() => res.redirect('/'));
-// });
+    editMovie(movieId, editedMovieInfo)
+    .then(() => {
+        res.status(200).json({message: "edited"})
+    }).catch((error) => res.json(error));
+});
+
 
 
 

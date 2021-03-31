@@ -29,7 +29,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />        
           <Route path='/register' component={Register} />
-          <PrivateRoute path="/movies/details/:movieId" exact component={MovieDetails} />
+          <Route path="/movies/details/:movieId" exact component={MovieDetails} />
           <PrivateRoute path='/movies/add-new' exact component={AddNew} />
           <PrivateRoute path='/movies/:genre' exact component={Movies} />
           <PrivateRoute path='/to-watch' component={ToWatch} />
