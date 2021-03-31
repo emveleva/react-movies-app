@@ -1,11 +1,10 @@
 import style from './AddNew.module.css'
-import Movie from '../../MovieTemplate/Movie';
-import * as movieService from '../../../services/movieService';
 import { AuthContext } from "../../../contexts/AuthContext"
 import ErrorHandler from "../../ErrorHandler/ErrorHandler"
-import { useState, useContext, Redirect } from "react";
+import { useState, useContext } from "react";
+import { Redirect } from 'react-router-dom';
 
-function AddNew() {
+export default function AddNew() {
     const [user, setUser] = useContext(AuthContext);
     const [title, setTitle] = useState('');
     const [year, setYear] = useState('');
@@ -29,21 +28,21 @@ function AddNew() {
         }).then(res => res.json())
         .then((res) => {
             if (res.message) throw new Error(res.message);
-            setMovieId(res._id)
+            setMovieId(res)
         }).catch(err => {
             setErrorMessage(err.message)
         });
     }
 
-    if (movieId !== '') {
-        console.log(movieId)
-        return <Redirect to={'/details/' + movieId} />;
-    }
+  if (movieId !== '') {
+      console.log(movieId)
+      return <Redirect to={`/movies/details/${movieId}`} />;
+  }
     return (
         <>
         <ErrorHandler>{errorMessage}</ErrorHandler>
         <main className='form addnew'>
-            <h1>Add New Movie</h1>
+            <h1 className="title">Add New Movie</h1>
             <div className={style.addnew}>
             <form onSubmit={handleSubmit}>
                 <div className={style.leftSide}>
@@ -76,7 +75,8 @@ function AddNew() {
                         onChange={(e) => setPosterURL(e.target.value)}
                         placeholder="https://" />
                     <p>Genre:</p>
-                    <select name="genre"  onChange={(e) => setGenre(e.target.value)} >
+                    <select name="genre"  placeholder="Select genre..."onChange={(e) => setGenre(e.target.value)} >
+                        <option value="Select genre..." >Select genre...</option>
                         <option value="Action">Action</option>
                         <option value="Adventure">Adventure</option>
                         <option value="Animation">Animation</option>
@@ -100,5 +100,5 @@ function AddNew() {
     );
     }
     
-    export default AddNew
+
 

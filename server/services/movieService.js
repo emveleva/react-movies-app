@@ -6,27 +6,30 @@ module.exports = {
             .find().lean();
         if (genre !== "all") { 
             let movies = Movie.find({genre}).lean();
-            console.log(movies);
             return movies;
         }
     },
-    getOne: (movieId) => Movie.findOne({movieId}).lean(),
-
+    getOne: (movieId) => {
+        let foundMovie = Movie.findById(movieId).lean();
+        return foundMovie;
+    },
     addNew: async ({...movieInfo}) => {
-        if (movieInfo.title == '') throw {message: 'Movie title cannot be empty.'};
-        if (movieInfo.year == '') throw {message: 'Movie year cannot be empty.'};
-        if (movieInfo.description == '') throw {message: 'Movie description cannot be empty.'};
-        if (movieInfo.actors == '') throw {message: 'Movie actors cannot be empty.'};
-        if (movieInfo.poster == '') throw {message: 'Movie poster cannot be empty.'};
-        if (movieInfo.genre == 'Select genre...') throw {message: 'Movie genre must be selected.'};
-        let urlPattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
-        let movieTitle = movieInfo.title;
-        if (movieTitle === Movie.findOne(movieTitle)) throw {message: 'There is already a movie with the same title.'}
-        if (!movieInfo.posterURL.match(urlPattern)) throw {message: 'Poster URL should be a valid link.'}
+        // if (movieInfo.title == '') throw {message: 'Movie title cannot be empty.'};
+        // if (movieInfo.year == '') throw {message: 'Movie year cannot be empty.'};
+        // if (movieInfo.description == '') throw {message: 'Movie description cannot be empty.'};
+        // if (movieInfo.actors == '') throw {message: 'Movie actors cannot be empty.'};
+        // if (movieInfo.poster == '') throw {message: 'Movie poster cannot be empty.'};
+        // if (movieInfo.genre == 'Select genre...') throw {message: 'Movie genre must be selected.'};
+        // let urlPattern = /^(?:http(s)?:\/\/)?[\w.-].*/;
+        // if (!movieInfo.posterURL.match(urlPattern)) throw {message: 'Poster URL should be a valid link.'}
+        // let dublicateCheck = Movie.find({title: movieInfo.title, year: movieInfo.year}).lean();
+        // console.log(dublicateCheck.json())
+        // if (dublicateCheck.length !== 0) throw {message: 'There is already a movie with the same title and the same year.'}
         let movie = await new Movie({...movieInfo})
-            .save();
-            console.log(movie)
-        return movie;
+        let movieId = movie._id;
+        movie.save();
+        console.log(movieId)
+        return movieId;
     },
 }
 

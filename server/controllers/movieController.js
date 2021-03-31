@@ -5,8 +5,8 @@ const { addNew, getAll, getOne } = require('../services/movieService')
 
 router.post('/add-new', (req, res) => {
     addNew(req.body)
-        .then(() => {
-            res.status(200).json({message: 'Movie added successfully!'})
+        .then((movieId) => {
+            res.status(200).json(movieId)
         }).catch((error) => res.json(error));
 });
 
@@ -16,14 +16,13 @@ router.get('/:genre', (req, res) => {
 
     getAll(genre)
     .then((movies) => {
-        console.log(movies)
         res.status(200).json(movies)
     }).catch((error) => res.json(error));
 });
 
 router.get('/details/:movieId', (req, res) => {
     let movieId = req.params.movieId;
-
+    console.log(movieId)
     getOne(movieId)
         .then(movie => {
             console.log(movie)
