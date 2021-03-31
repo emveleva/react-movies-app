@@ -5,61 +5,61 @@ import { useState, useContext } from "react";
 import { Redirect } from 'react-router-dom';
 
 export default function AddNew({match}) {
-    let movieId = match.params.movieId;
+//     let movieId = match.params.movieId;
 
-    const [movie, setMovie] = useState({});
+//     const [movie, setMovie] = useState({});
 
-        useEffect(() => {
+//         useEffect(() => {
 
-            return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`)
-                  .then(res => res.json())
-                .then((res) => {
-                    if (res.message) throw new Error(res.message);
-                    setMovie(res)
-                    console.log(movie)
-                }).catch(err => {
-                    console.log(err.message)
-                });
-    }, []);
+//             return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`)
+//                   .then(res => res.json())
+//                 .then((res) => {
+//                     if (res.message) throw new Error(res.message);
+//                     setMovie(res)
+//                     console.log(movie)
+//                 }).catch(err => {
+//                     console.log(err.message)
+//                 });
+//     }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        let movieId = match.params.movieId;
-        let updatedMovie = {}
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         let movieId = match.params.movieId;
+//         let updatedMovie = {}
 
-    const [user, setUser] = useContext(AuthContext);
-    const [title, setTitle] = useState('');
-    const [year, setYear] = useState('');
-    const [description, setDescription] = useState('');
-    const [actors, setActors] = useState('');
-    const [posterURL, setPosterURL] = useState('');
-    const [genre, setGenre] = useState('Select genre...');
-    const [errorMessage, setErrorMessage] = useState('');
-    const [movieId, setMovieId] = useState('');
+//     const [user, setUser] = useContext(AuthContext);
+//     const [title, setTitle] = useState('');
+//     const [year, setYear] = useState('');
+//     const [description, setDescription] = useState('');
+//     const [actors, setActors] = useState('');
+//     const [posterURL, setPosterURL] = useState('');
+//     const [genre, setGenre] = useState('Select genre...');
+//     const [errorMessage, setErrorMessage] = useState('');
+//     const [movieId, setMovieId] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        let userId = user._id
-        return fetch(`http://localhost:4003/movies/details/:`, {
-            method: 'POST',
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-               },
-            body: JSON.stringify({title, year, description, actors, posterURL, genre, user: userId}) 
-        }).then(res => res.json())
-        .then((res) => {
-            if (res.message) throw new Error(res.message);
-            setMovieId(res)
-        }).catch(err => {
-            setErrorMessage(err.message)
-        });
-    }
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         let userId = user._id
+//         return fetch(`http://localhost:4003/movies/details/:`, {
+//             method: 'POST',
+//             headers : { 
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json'
+//                },
+//             body: JSON.stringify({title, year, description, actors, posterURL, genre, user: userId}) 
+//         }).then(res => res.json())
+//         .then((res) => {
+//             if (res.message) throw new Error(res.message);
+//             setMovieId(res)
+//         }).catch(err => {
+//             setErrorMessage(err.message)
+//         });
+//     }
 
-  if (movieId !== '') {
-      console.log(movieId)
-      return <Redirect to={`/movies/details/${movieId}`} />;
-  }
+//   if (movieId !== '') {
+//       console.log(movieId)
+//       return <Redirect to={`/movies/details/${movieId}`} />;
+//   }
     return (
         <>
         <ErrorHandler>{errorMessage}</ErrorHandler>
@@ -106,6 +106,7 @@ export default function AddNew({match}) {
                         <option value="Drama">Drama</option>
                         <option value="Fantasy">Fantasy</option>
                         <option value="Horror">Horror</option>
+                        <option value="Mystery">Mystery</option>
                         <option value="Romance">Romance</option>
                         <option value="Sci-Fi">Sci-Fi</option>
                         <option value="Thriller">Thriller</option>

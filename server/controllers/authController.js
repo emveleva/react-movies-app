@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { register, login } = require('../services/authService');
+const { register, login, getLists } = require('../services/authService');
 const User = require('../Models/User');
 const jwt = require('jsonwebtoken');
 const { SECRET, COOKIE_NAME } = require('../config/config');
@@ -14,6 +14,15 @@ router.get('/', (req, res) => {
 router.get('/logout', (req, res) => {
     res.clearCookie(COOKIE_NAME)
     res.status(200).json({message: 'logged out'})
+});
+
+router.get('/register', (req, res) => {
+    let userId = req.user._id;
+    getLists(userId)
+        .then(lists => {
+            console.log({lists})
+            res.status(200).json({lists})
+    }).catch((error) => res.json(error));
 });
 
 // POST

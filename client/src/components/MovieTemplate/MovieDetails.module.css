@@ -73,18 +73,18 @@
 .towatch {
     background-color: #5271ff;
     color: white;
-    width: 100px;
+    width: 150px;
 }
 
 .watched {
     background-color: #34b6a6;
     color: white;
-    width: 100px;
+    width: 150px;
 }
 
 .editDetails {
     background-color: rgb(250, 228, 107);
     color: #343434;
-    width: 210px;
+    width: 150px;
 
 }

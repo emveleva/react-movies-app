@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import { AuthContext } from "../../contexts/AuthContext"
 import { Redirect} from 'react-router-dom';
 import ErrorHandler from "../ErrorHandler/ErrorHandler"
+import {loginUser} from '../../services/authService'
 
 export default function Login() {
   const [errorMessage, setErrorMessage] = useState('');
@@ -11,12 +12,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    return fetch(`http://localhost:4003/login`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({username, password})
-  }).then(res => res.json())
+    loginUser(username, password)
       .then((resp) => {
           if (resp.message) throw new Error(resp.message);
           setUser({_id: resp.user._id, username: resp.user.username})
@@ -26,6 +22,8 @@ export default function Login() {
       });
   
   }
+
+
   if (user.username !== '') {
     return <Redirect to="/"/>;
 }

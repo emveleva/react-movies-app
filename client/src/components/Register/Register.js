@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import { AuthContext } from "../../contexts/AuthContext"
 import { Redirect } from 'react-router-dom';
 import ErrorHandler from "../ErrorHandler/ErrorHandler"
+import {registerUser} from '../../services/authService'
 
 export default function Register() {
   const [user, setUser] = useContext(AuthContext);
@@ -11,12 +12,8 @@ export default function Register() {
   const [rePassword, setRePassword] = useState('');
 
    const handleSubmit = (e) => {
-      e.preventDefault();
-      return fetch('http://localhost:4003/register', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username, password, rePassword})
-    }).then(res => res.json())
+    e.preventDefault();
+    registerUser(username, password, rePassword)  
         .then((res) => {
             if (res.message) throw new Error(res.message);
             setUser({_id: res.user._id, username: res.user.username})

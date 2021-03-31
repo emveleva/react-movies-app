@@ -13,6 +13,7 @@ const Genres = () => {
                 <li><NavLink activeClassName={style.listItem} to="/movies/Drama">Drama</NavLink></li>
                 <li><NavLink activeClassName={style.listItem} to="/movies/Fantasy">Fantasy</NavLink></li>
                 <li><NavLink activeClassName={style.listItem} to="/movies/Horror">Horror</NavLink></li>
+                <li><NavLink activeClassName={style.listItem} to="/movies/Mystery">Mystery</NavLink></li>
                 <li><NavLink activeClassName={style.listItem} to="/movies/Romance">Romance</NavLink></li>
                 <li><NavLink activeClassName={style.listItem} to="/movies/Sci-Fi">Sci-Fi</NavLink></li>
                 <li><NavLink activeClassName={style.listItem} to="/movies/Thriller">Thriller</NavLink></li>

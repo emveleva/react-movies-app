@@ -22,8 +22,13 @@ async function login({username, password}) {
             throw {message: 'Wrong username or password.'};
         return jwt.sign({_id: user._id, username: user.username}, SECRET);
 }
+async function getLists(userId) {
+    let currentUser = User.findById(userId).lean();
+    let lists = {toWatch: currentUser.toWatch, watched: currentUser.watched}
+    return lists;
+}
 
 
 module.exports = {
-    register, login
+    register, login, getLists
 }

@@ -1,6 +1,8 @@
 import style from './Watched.module.css';
 
 function Watched() {
+  // handle back-end
+  // get watched
   return (
     <main className={style.watched}>
         <h1>Already Watched</h1>          
