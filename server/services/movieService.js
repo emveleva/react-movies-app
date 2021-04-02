@@ -9,8 +9,8 @@ module.exports = {
             return movies;
         }
     },
-    getOne: (movieId) => {
-        let foundMovie = Movie.findById(movieId).lean();
+    getOne: async (movieId) => {
+        let foundMovie = await Movie.findById(movieId);
         return foundMovie;
     },
     addNew: async ({...movieInfo}) => {
@@ -28,7 +28,6 @@ module.exports = {
         let movie = await new Movie({...movieInfo})
         let movieId = movie._id;
         movie.save();
-        console.log(movieId)
         return movieId;
     },
     editMovie: (movieId, editedMovieInfo) => {

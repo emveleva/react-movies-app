@@ -16,14 +16,14 @@ router.get('/logout', (req, res) => {
     res.status(200).json({message: 'logged out'})
 });
 
-router.get('/register', (req, res) => {
-    let userId = req.user._id;
-    getLists(userId)
-        .then(lists => {
-            console.log({lists})
-            res.status(200).json({lists})
-    }).catch((error) => res.json(error));
-});
+// router.get('/register', (req, res) => {
+//     let userId = req.user._id;
+//     getLists(userId)
+//         .then(user => {
+//             console.log({user})
+//             res.status(200).json({user})
+//     }).catch((error) => res.json(error));
+// });
 
 // POST
 router.post('/register', (req, res) => {

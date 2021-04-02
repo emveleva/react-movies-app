@@ -25,7 +25,7 @@ export default function Login() {
 
 
   if (user.username !== '') {
-    return <Redirect to="/"/>;
+    return <Redirect to="/movies/all"/>;
 }
   
     return (

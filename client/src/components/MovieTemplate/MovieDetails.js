@@ -3,75 +3,148 @@ import style from './MovieDetails.module.css'
 import { AuthContext } from "../../contexts/AuthContext"
 
 export default function MovieDetails({match}) {
+    const [movieId, setMovieId] = useState(match.params.movieId)
     const [movie, setMovie] = useState({});
     const [user, setUser] = useContext(AuthContext);
-    const [toWatch, setToWatch] = useState(false);
-    const [watched, setWatched] = useState(false);
+    const [toWatch, setToWatch] = useState([]);
+    const [watched, setWatched] = useState([]);
+    const [inToWatch, setInToWatch] = useState(false);
+    const [inWatched, setInWatched] = useState(false);
+    const [isLoading, setIsLoading] = useState(true)
 
+
+    //works
     // create function getMovieDetails
         useEffect(() => {
+          console.log("ineffect")
             return fetch(`http://localhost:4003/movies/details/${match.params.movieId}`)
                   .then(res => res.json())
                 .then((res) => {
                     if (res.message) throw new Error(res.message);
                     setMovie(res)
-                    console.log(movie)
                 }).catch(err => {
                     console.log(err.message)
                 });
+                
     }, []);
     let isOwner = false;
     if (user._id === movie.user || user.username === 'admin'){
         isOwner = true;
     }
 
-    // handle back-end
-    // adds movie to to-watch list
+
+    useEffect(() => {
+      async function resLists() {
+        let res = await fetch(`http://localhost:4003/dashboard/${user._id}`);
+        let data = await res.json();
+        setToWatch(data.toWatch)
+        setWatched(data.watched)
+        if (toWatch.includes(movieId)) {
+          setInToWatch(true)
+          console.log("here")
+        } else {
+          setInToWatch(false)
+        }
+        if (watched.includes(movieId)) {
+          setInWatched(true)
+          console.log("here 2")
+        } else {
+          setInWatched(false)
+        }
+      }
+      resLists()
+    }, [inToWatch]);
+      // console.log("second")
+      // return fetch(`http://localhost:4003/dashboard/${user._id}`)
+      //       .then(res => res.json())
+      //     .then((res) => {
+      //         if (res.message) throw new Error(res.message);
+      //         setToWatch(res.toWatch)
+      //         setWatched(res.watched)
+      //       console.log(toWatch.includes(movieId))
+      //       if (toWatch.includes(movieId)) {
+      //         setInToWatch(true)
+      //         console.log("here")
+      //       } else {
+      //         setInToWatch(false)
+      //       }
+      //       if (watched.includes(movieId)) {
+      //         setInWatched(true)
+      //         console.log("here 2")
+      //       } else {
+      //         setInWatched(false)
+      //       }
+      //     }).catch(err => {
+      //         console.log(err.message)
+      //     });
+
+
+
+
+//works
     // create function addToWatch
     const handleToWatchSubmit = (e) => {
         e.preventDefault();
-        return fetch('http://localhost:4003/dashboard/to-watch', {
+        return fetch(`http://localhost:4003/dashboard/to-watch`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: (movie)
+          body: JSON.stringify({movieId: movie._id, userId: user._id})
       }).then(res => res.json())
           .then((res) => {
               if (res.message) throw new Error(res.message);
-            setToWatch(true)
           }).catch(err => {
             console.log(err.message)
           });
       }
 
-    // handle back-end
-    // adds movie to watched list
+
     // create function addWatched
       const handleWatchedSubmit = (e) => {
         e.preventDefault();
-        return fetch('http://localhost:4003/dashboard/watched', {
+        return fetch(`http://localhost:4003/dashboard/watched`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: (movie)
+          body: JSON.stringify({movieId: movie._id, userId: user._id})
       }).then(res => res.json())
           .then((res) => {
               if (res.message) throw new Error(res.message);
-              setWatched(true)
           }).catch(err => {
             console.log(err.message)
           });
+      
       }
       // delete movie from list
       // create function removeToWatch
       // handle back-end req
       const handleRemoveToWatch = (e) => {
         e.preventDefault();
-
+        return fetch(`http://localhost:4003/dashboard/to-watch`, {
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({movieId: movie._id, userId: user._id})
+      }).then(res => res.json())
+          .then((res) => {
+              if (res.message) throw new Error(res.message);
+          }).catch(err => {
+            console.log(err.message)
+          });
       }
+
+      
         // delete movie from list
       // create function removeWatched
-      // handle back-end req
       const handleRemoveWatched  = (e) => {
         e.preventDefault();
+        return fetch(`http://localhost:4003/dashboard/watched`, {
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({movieId: movie._id, userId: user._id})
+      }).then(res => res.json())
+          .then((res) => {
+              if (res.message) throw new Error(res.message);
+          }).catch(err => {
+            console.log(err.message)
+          });
       }
 
 
@@ -93,10 +166,10 @@ export default function MovieDetails({match}) {
             <li>
             <hr />
             <p>This movie is not added to your movie lists.</p>
-            <p>{!toWatch && <button onClick={handleToWatchSubmit} className={style.towatch}>Add in To-Watch</button>}
-            {toWatch && <button onClick={handleRemoveToWatch} className={style.remove}>Remove from To-Watch</button>}
-            {!watched && <button onClick={handleWatchedSubmit}className={style.watched}>Add in Watched</button> }
-            {watched && <button onClick={handleRemoveWatched} className={style.towatch}>Remove from Watched</button>}
+            <p>{!inToWatch && <button onClick={handleToWatchSubmit} className={style.towatch}>Add in To-Watch</button>}
+            {inToWatch && <button onClick={handleRemoveToWatch} className={style.remove}>Remove from To-Watch</button>}
+            {!inWatched && <button onClick={handleWatchedSubmit}className={style.watched}>Add in Watched</button> }
+            {inWatched && <button onClick={handleRemoveWatched} className={style.remove}>Remove from Watched</button>}
             {isOwner && <button className={style.editDetails}>Edit Movie Details</button>} </p>
             </li>
             </div>

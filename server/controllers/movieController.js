@@ -22,10 +22,8 @@ router.get('/:genre', (req, res) => {
 
 router.get('/details/:movieId', (req, res) => {
     let movieId = req.params.movieId;
-    console.log(movieId)
     getOne(movieId)
-        .then(movie => {
-            console.log(movie)
+        .then((movie) => {
             res.status(200).json(movie)
     }).catch((error) => res.json(error));
 });
@@ -40,6 +38,7 @@ router.post('/details/edit/:movieId', (req, res) => {
         res.status(200).json({message: "edited"})
     }).catch((error) => res.json(error));
 });
+
 
 
 

@@ -32,8 +32,8 @@ function App() {
           <PrivateRoute path="/movies/details/:movieId" exact component={MovieDetails} />
           <PrivateRoute path='/movies/add-new' exact component={AddNew} />
           <PrivateRoute path='/movies/:genre' exact component={Movies} />
-          <PrivateRoute path='/to-watch' component={ToWatch} />
-          <PrivateRoute path='/watched' component={Watched} />
+          <PrivateRoute path='/dashboard/to-watch' component={ToWatch} />
+          <PrivateRoute path='/dashboard/watched' component={Watched} />
           <Route path='/login' exact component={Login} />
           <Route path='/logout' component={Logout} />
           <PrivateRoute path='/dashboard' component={Dashboard} />

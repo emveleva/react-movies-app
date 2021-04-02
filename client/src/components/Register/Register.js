@@ -16,7 +16,7 @@ export default function Register() {
     registerUser(username, password, rePassword)  
         .then((res) => {
             if (res.message) throw new Error(res.message);
-            setUser({_id: res.user._id, username: res.user.username})
+            setUser({_id: res.user._id, username: res.user.username, toWatch: res.user.toWatch, watched: res.user.watched })
         }).catch(err => {
             setErrorMessage(err.message)
         });
