@@ -1,65 +1,59 @@
-import style from './AddNew.module.css'
+import style from './EditMovie.module.css'
 import { AuthContext } from "../../../contexts/AuthContext"
 import ErrorHandler from "../../ErrorHandler/ErrorHandler"
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Redirect } from 'react-router-dom';
 
-export default function AddNew({match}) {
-//     let movieId = match.params.movieId;
+export default function EditMovie({match}) {
 
-//     const [movie, setMovie] = useState({});
+    const [movie, setMovie] = useState({});
+    const [user, setUser] = useContext(AuthContext);
+    const [updatedMovie, setUpdatedMovie] = useState({movie});
+    const [errorMessage, setErrorMessage] = useState('');
+    const [feedback, setFeedback] = useState('');
 
-//         useEffect(() => {
+    useEffect(() => {
+        return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`)
+                  .then(res => res.json())
+                .then((res) => {
+                    if (res.message == "success") setMovie(res.movie)
+                                        console.log(movie)
+                                    }).catch(err => {
+                                        console.log(err.message)
+                                    });
+                        }, []);
 
-//             return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`)
-//                   .then(res => res.json())
-//                 .then((res) => {
-//                     if (res.message) throw new Error(res.message);
-//                     setMovie(res)
-//                     console.log(movie)
-//                 }).catch(err => {
-//                     console.log(err.message)
-//                 });
-//     }, []);
 
 //     const handleSubmit = (e) => {
 //         e.preventDefault();
 //         let movieId = match.params.movieId;
 //         let updatedMovie = {}
 
-//     const [user, setUser] = useContext(AuthContext);
-//     const [title, setTitle] = useState('');
-//     const [year, setYear] = useState('');
-//     const [description, setDescription] = useState('');
-//     const [actors, setActors] = useState('');
-//     const [posterURL, setPosterURL] = useState('');
-//     const [genre, setGenre] = useState('Select genre...');
-//     const [errorMessage, setErrorMessage] = useState('');
-//     const [movieId, setMovieId] = useState('');
+    
 
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         let userId = user._id
-//         return fetch(`http://localhost:4003/movies/details/:`, {
-//             method: 'POST',
-//             headers : { 
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json'
-//                },
-//             body: JSON.stringify({title, year, description, actors, posterURL, genre, user: userId}) 
-//         }).then(res => res.json())
-//         .then((res) => {
-//             if (res.message) throw new Error(res.message);
-//             setMovieId(res)
-//         }).catch(err => {
-//             setErrorMessage(err.message)
-//         });
-//     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let userId = user._id
+        console.log(updatedMovie)
+        return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`, {
+            method: 'POST',
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               },
+            body: JSON.stringify(updatedMovie) 
+        }).then(res => res.json())
+        .then((res) => {
+            if (res.message == "edited") setFeedback("edited")
+        }).catch(err => {
+            setErrorMessage(err.message)
+        });
+    }
 
-//   if (movieId !== '') {
-//       console.log(movieId)
-//       return <Redirect to={`/movies/details/${movieId}`} />;
-//   }
+  if (feedback) {
+      console.log(feedback)
+      return <Redirect to={`/movies/details/${match.params.movieId}`} />;
+  }
     return (
         <>
         <ErrorHandler>{errorMessage}</ErrorHandler>
@@ -71,33 +65,39 @@ export default function AddNew({match}) {
                     <p>Title:</p>
                     <input 
                         type="title"
-                        onChange={(e) => setTitle(e.target.value)}
+                        defaultValue={movie.title}
+                        onChange={(e) => setUpdatedMovie({title: e.target.value})}
                         placeholder="Title"
                         required />
                     <p>Year:</p>
                     <input
                         type="year"
-                        onChange={(e) => setYear(e.target.value)}
+                        defaultValue={movie.year}
+                        onChange={(e) => setUpdatedMovie({year: e.target.value})}
                         placeholder="2021" />
                     <p>Description:</p>
                     <input 
                         type="description"
-                        onChange={(e) => setDescription(e.target.value)}
+                        defaultValue={movie.description}
+                        onChange={(e) => setUpdatedMovie({description: e.target.value})}
                         placeholder="A long time ago in a galaxy far, far away..." />
                 </div>
                 <div className={style.rightSide}>
                     <p>Actors:</p>
                     <input 
                         type="actors"
-                        onChange={(e) => setActors(e.target.value)}
+                        defaultValue={movie.actors}
+                        onChange={(e) => setUpdatedMovie({actors: e.target.value})}
                         placeholder="Darth Vader, Luke Skywalker" />
                     <p>Poster URL:</p>
                     <input 
                         type="posterURL"
-                        onChange={(e) => setPosterURL(e.target.value)}
+                        contenteditable="true"
+                        defaultValue={movie.posterURL}
+                        onChange={(e) => setUpdatedMovie({posterUrl: e.target.value})}
                         placeholder="https://" />
                     <p>Genre:</p>
-                    <select name="genre"  placeholder="Select genre..."onChange={(e) => setGenre(e.target.value)} >
+                    <select name="genre" defaultValue={movie.genre} placeholder="Select genre..."onChange={(e) => setUpdatedMovie({genre: e.target.value})} >
                         <option value="Select genre..." >Select genre...</option>
                         <option value="Action">Action</option>
                         <option value="Adventure">Adventure</option>
@@ -114,7 +114,7 @@ export default function AddNew({match}) {
                     </select>
                 </div>
                 <div className={style.center}>
-                    <button type="submit" >Add</button>
+                    <button type="submit" >Edit</button>
                 </div>
             </form>
             </div>

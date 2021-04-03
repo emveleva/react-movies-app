@@ -5,6 +5,7 @@ import { usePromiseTracker } from 'react-promise-tracker';
 import Loader from 'react-promise-loader';
 import { trackPromise} from 'react-promise-tracker';
 import UserOptions from "./UserOptions"
+import { Link } from 'react-router-dom'
 
 
 export default function MovieDetails({match}) {
@@ -270,7 +271,7 @@ function fetchMovie() {
             : <button onClick={handleRemoveToWatch} className={style.remove}>Remove from To-Watch</button>}
             {!inWatched ? <button onClick={handleWatchedSubmit} className={style.watched}>Add in Watched</button> 
             : inWatched && <button onClick={handleRemoveWatched} className={style.remove}>Remove from Watched</button>}
-            {<button className={style.editDetails}>Edit Movie Details</button>} </p> </>}
+            {<Link to={`/movies/details/edit/${match.params.movieId}`}><button  className={style.editDetails}> Edit Movie Details </button> </Link>} </p> </>}
            </li>
     
 

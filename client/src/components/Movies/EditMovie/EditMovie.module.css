@@ -11,6 +11,7 @@
 
 .addnew input {
     width: 300px;
+    overflow-x: visible;
 }
 
 .center {

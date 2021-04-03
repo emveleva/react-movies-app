@@ -11,6 +11,7 @@ import Watched from './components/Dashboard/Watched'
 import Movies from './components/Movies'
 import AddNew from './components/Movies/AddNew'
 import MovieDetails from './components/MovieTemplate/MovieDetails'
+import EditMovie from './components/Movies/EditMovie/EditMovie'
 import { AuthProvider } from "./contexts/AuthContext"
 import PrivateRoute from "./components/PrivateRoute"
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/' exact component={Home} />        
           <Route path='/register' component={Register} />
           <PrivateRoute path="/movies/details/:movieId" exact component={MovieDetails} />
+          <Route path='/movies/details/edit/:movieId' exact component={EditMovie} />
           <PrivateRoute path='/movies/add-new' exact component={AddNew} />
           <PrivateRoute path='/movies/:genre' exact component={Movies} />
           <PrivateRoute path='/dashboard/to-watch' component={ToWatch} />

@@ -30,8 +30,9 @@ module.exports = {
         movie.save();
         return movieId;
     },
-    editMovie: (movieId, editedMovieInfo) => {
-        Movie.updateOne({_id: movieId}, editedMovieInfo);
+    editMovie: async (movieId, editedMovieInfo) => {
+        let movie = await Movie.updateOne({_id: movieId}, editedMovieInfo);
+        return movie
     } 
 }
 
