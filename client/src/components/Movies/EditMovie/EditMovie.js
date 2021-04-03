@@ -8,7 +8,12 @@ export default function EditMovie({match}) {
 
     const [movie, setMovie] = useState({});
     const [user, setUser] = useContext(AuthContext);
-    const [updatedMovie, setUpdatedMovie] = useState({movie});
+    const [updatedTitle, setUpdatedTitle] = useState(movie.title);
+    const [updatedYear, setUpdatedYear] = useState(movie.year)
+    const [updatedDescription, setUpdatedDescription] = useState(movie.description)
+    const [updatedActors, setUpdatedActors] = useState(movie.actors)
+    const [updatedPosterURL, setUpdatedPosterURL] = useState(movie.posterURL)
+    const [updatedGenre, setUpdatedGenre] = useState(movie.genre)
     const [errorMessage, setErrorMessage] = useState('');
     const [feedback, setFeedback] = useState('');
 
@@ -17,38 +22,34 @@ export default function EditMovie({match}) {
                   .then(res => res.json())
                 .then((res) => {
                     if (res.message == "success") setMovie(res.movie)
-                                        console.log(movie)
+                                        console.log(res.movie)
                                     }).catch(err => {
                                         console.log(err.message)
                                     });
                         }, []);
 
 
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         let movieId = match.params.movieId;
-//         let updatedMovie = {}
 
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
         let userId = user._id
-        console.log(updatedMovie)
         return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`, {
             method: 'POST',
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
                },
-            body: JSON.stringify(updatedMovie) 
+            body: JSON.stringify({title: updatedTitle, year: updatedYear, description: updatedDescription, actors: updatedActors, posterURL: updatedPosterURL, genre: updatedGenre}) 
         }).then(res => res.json())
         .then((res) => {
-            if (res.message == "edited") setFeedback("edited")
+            if (res.message !== "edited") throw new Error(res.message)
+            if (res.message == "edited") setFeedback('next')
         }).catch(err => {
             setErrorMessage(err.message)
         });
     }
+    
 
   if (feedback) {
       console.log(feedback)
@@ -66,20 +67,20 @@ export default function EditMovie({match}) {
                     <input 
                         type="title"
                         defaultValue={movie.title}
-                        onChange={(e) => setUpdatedMovie({title: e.target.value})}
+                        onChange={(e) => setUpdatedTitle(e.target.value)}
                         placeholder="Title"
-                        required />
+                         />
                     <p>Year:</p>
                     <input
                         type="year"
                         defaultValue={movie.year}
-                        onChange={(e) => setUpdatedMovie({year: e.target.value})}
+                        onChange={(e) => setUpdatedYear(e.target.value)}
                         placeholder="2021" />
                     <p>Description:</p>
                     <input 
                         type="description"
                         defaultValue={movie.description}
-                        onChange={(e) => setUpdatedMovie({description: e.target.value})}
+                        onChange={(e) => setUpdatedDescription(e.target.value)}
                         placeholder="A long time ago in a galaxy far, far away..." />
                 </div>
                 <div className={style.rightSide}>
@@ -87,17 +88,17 @@ export default function EditMovie({match}) {
                     <input 
                         type="actors"
                         defaultValue={movie.actors}
-                        onChange={(e) => setUpdatedMovie({actors: e.target.value})}
+                        onChange={(e) => setUpdatedActors(e.target.value)}
                         placeholder="Darth Vader, Luke Skywalker" />
                     <p>Poster URL:</p>
                     <input 
                         type="posterURL"
                         contenteditable="true"
                         defaultValue={movie.posterURL}
-                        onChange={(e) => setUpdatedMovie({posterUrl: e.target.value})}
+                        onChange={(e) => setUpdatedPosterURL(e.target.value)}
                         placeholder="https://" />
                     <p>Genre:</p>
-                    <select name="genre" defaultValue={movie.genre} placeholder="Select genre..."onChange={(e) => setUpdatedMovie({genre: e.target.value})} >
+                    <select name="genre" value={updatedGenre ? updatedGenre : movie.genre} onChange={(e) => setUpdatedGenre(e.target.value)} >
                         <option value="Select genre..." >Select genre...</option>
                         <option value="Action">Action</option>
                         <option value="Adventure">Adventure</option>
