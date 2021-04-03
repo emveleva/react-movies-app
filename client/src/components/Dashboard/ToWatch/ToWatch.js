@@ -11,7 +11,7 @@ export default function ToWatch() {
   // handle back-end
   // getToWatch
     const [user, setUser] = useContext(AuthContext);
-    const [toWatch, setToWatch] = useState(null)
+    const [toWatch, setToWatch] = useState([])
 
     // const [lists, setLists] = useState([])
     // const { promiseInProgress } = usePromiseTracker();

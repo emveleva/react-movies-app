@@ -16,14 +16,17 @@ export default function UserOptions(props) {
     const [inToWatch, setInToWatch] = useState(false);
     const [inWatched, setInWatched] = useState(false);
 
+
+    console.log(props)
     useEffect(() => {
         setIsLoading(true)
         fetch(`http://localhost:4003/dashboard/${user._id}`)
               .then(res => res.json())
             .then((res) => {
-                if (res.message) throw new Error(res.message);
-                setToWatch(res.toWatch)
-                setWatched(res.watched)
+                if (res.message == "success") 
+                console.log(res)
+                setToWatch(res.lists.toWatch)
+                setWatched(res.lists.watched)
                 
     console.log(movie)
               console.log(movieId)

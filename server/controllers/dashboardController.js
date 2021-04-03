@@ -7,7 +7,7 @@ router.get('/:userId', (req, res) => {
     let userId = req.params.userId;
     getLists(userId)
         .then((lists) => {
-            res.status(200).json(lists)
+            res.status(200).json({message: "success", lists})
         }).catch((error) => res.json(error));
 });
 

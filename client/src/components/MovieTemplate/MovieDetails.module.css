@@ -79,18 +79,18 @@
 .watched {
     background-color: #34b6a6;
     color: white;
-    width: 150px;
+    width: 180px;
 }
 
 .editDetails {
     background-color: rgb(250, 228, 107);
     color: #343434;
-    width: 150px;
+    width: 180px;
 
 }
 
 .remove {
     background-color: #df2935;
     color: white;
-    width: 150px;
+    width: 180px;
 }

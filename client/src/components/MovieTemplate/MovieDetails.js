@@ -16,6 +16,8 @@ export default function MovieDetails({match}) {
     const [watched, setWatched] = useState([]);
     const [inToWatch, setInToWatch] = useState(false);
     const [inWatched, setInWatched] = useState(false);
+    const [afterLoad, setAfterLoad] = useState(true)
+
 
 function fetchMovie() {
         return fetch(`http://localhost:4003/movies/details/${match.params.movieId}`)
@@ -25,27 +27,39 @@ function fetchMovie() {
         return fetch(`http://localhost:4003/dashboard/${user._id}`)
         .then(res => res.json())
       
-    }
-    //works
-    // create function getMovieDetails
+ }
+
+
         useEffect(() => {
           setIsLoading(true)
-            fetchMovie()
-                .then((res) => {
-                    if (res.message) throw new Error(res.message);
-                    setMovie(res)
-                    console.log(movie)
-                    console.log(movieId)
-            fetchLists()
+
+          fetchMovie()
+          .then((res) => {
+                              if (res.message == 'success') {
+                                setMovie(res.movie)
+                              console.log(movie)}
+                                console.log("movie set")
+                              console.log(res.movie)
+                              console.log(movie)
+                              console.log("setafterload")
+                            }).catch(err => {
+                              console.log(err.message)
+                                  })
+                                }, [match.params.movieId])
+                              
+                            useEffect(()=> {  
+                              console.log(movie)
+                              fetchLists()
                     .then((res) => {
-                        if (res.message) throw new Error(res.message);
-                        setToWatch(res.toWatch)
-                        setWatched(res.watched)
+                        if (res.message == "success") 
+                        setToWatch(res.lists.toWatch)
+                        setWatched(res.lists.watched)
                         setIsLoading(false)
+                        console.log(movieId)
                       console.log(toWatch)
-                      const foundToWatch = toWatch.find(movie => movie._id.toString() === movieId?.toString())
+                      const foundToWatch = res.lists.toWatch.find(mov => mov._id.toString() === movieId?.toString())
                       console.log(foundToWatch)
-                      const foundWatched = watched.find(movie => movie._id.toString() === movieId?.toString())
+                      const foundWatched = res.lists.watched.find(mov => mov._id.toString() === movieId?.toString())
                 if (foundToWatch) {
                     console.log("set")
                   setInToWatch(true)
@@ -54,20 +68,84 @@ function fetchMovie() {
                   setInWatched(true)
                 }
                   setIsLoading(false)
-                  
+                  setAfterLoad(false)
           }).catch(err => {
               console.log(err.message)
           })
-  }, [match.params.movieId, inToWatch, inWatched])
+
+    }, [movie])
+    //works
+    // create function getMovieDetails
+  //       useEffect(() => {
+  //         setIsLoading(true)
+  //           fetchMovie()
+  //               .then((res) => {
+  //                   if (res.message) throw new Error(res.message);
+  //                   setMovie(res)
+  //                   console.log(movie)
+  //                   console.log(movieId)
+  //                 }).catch(err => {
+  //                   console.log(err.message)
+  //               })
+
+  // useEffect(() => {
+  //   fetchLists()
+  //                   .then((res) => {
+  //                       if (res.message == "success") 
+  //                       setToWatch(res.lists.toWatch)
+  //                       setWatched(res.lists.watched)
+  //                       setIsLoading(false)
+  //                       console.log(movie)
+  //                     console.log(toWatch)
+  //                     const foundToWatch = toWatch.find(movie => movie._id.toString() === movieId?.toString())
+  //                     console.log(foundToWatch)
+  //                     const foundWatched = watched.find(movie => movie._id.toString() === movieId?.toString())
+  //               if (foundToWatch) {
+  //                   console.log("set")
+  //                 setInToWatch(true)
+  //               }
+  //               if (foundWatched){
+  //                 setInWatched(true)
+  //               }
+  //                 setIsLoading(false)
+                  
+  //         }).catch(err => {
+  //             console.log(err.message)
+  //         })
+  // }, [])
+
+  //           fetchLists()
+  //                   .then((res) => {
+  //                       if (res.message) throw new Error(res.message);
+  //                       setToWatch(res.toWatch)
+  //                       setWatched(res.watched)
+  //                       setIsLoading(false)
+  //                     console.log(toWatch)
+  //                     const foundToWatch = toWatch.find(movie => movie._id.toString() === movieId?.toString())
+  //                     console.log(foundToWatch)
+  //                     const foundWatched = watched.find(movie => movie._id.toString() === movieId?.toString())
+  //               if (foundToWatch) {
+  //                   console.log("set")
+  //                 setInToWatch(true)
+  //               }
+  //               if (foundWatched){
+  //                 setInWatched(true)
+  //               }
+  //                 setIsLoading(false)
+                  
+  //         }).catch(err => {
+  //             console.log(err.message)
+  //         })
+  // }, [match.params.movieId, inToWatch, inWatched])
                 // }).catch(err => {
                 //     console.log(err.message)
                 // });
                 
-    }, [match.params.movieId]);
-    let isOwner = false;
-    if (user._id === movie.user || user.username === 'admin'){
-        isOwner = true;
-    }
+    // }, [match.params.movieId]);
+    // let isOwner = false;
+    // if (user._id === movie.user || user.username === 'admin'){
+    //     isOwner = true;
+    // }
 
 
     // useEffect(() => {
@@ -167,12 +245,11 @@ function fetchMovie() {
 
 
     return (
-        
+
         <main className={style.moviedetails}>
-          {/* <p>{promiseInProgress ? "loading" : "done"}</p> */}
              <h1>Movie Details</h1>
-  
-            <ul>
+             {isLoading  ? <Loader promiseTracker={usePromiseTracker} color={'#3d5e61'} background={'rgba(255,255,255,.5)'} /> :
+           <><ul>
             <h2>{movie.title}</h2>
                 <div className={style.leftSide}>
   
@@ -186,17 +263,21 @@ function fetchMovie() {
 
             <li>
             <hr />
-            {/* <UserOptions movieId={movieId} movie={movie}/> */}
-            {isLoading  ? <Loader promiseTracker={usePromiseTracker} color={'#3d5e61'} background={'rgba(255,255,255,.5)'} /> :
-        <><p>This movie is not added to your movie lists.</p>
-        <p>{!inToWatch ? <button onClick={handleToWatchSubmit} className="towatch">Add in To-Watch</button>
-        : <button onClick={handleRemoveToWatch} className="remove">Remove from To-Watch</button>}
-        {!inWatched ? <button onClick={handleWatchedSubmit} className="watched">Add in Watched</button> 
-        : inWatched && <button onClick={handleRemoveWatched} className="remove">Remove from Watched</button>}
-        {<button className="editDetails">Edit Movie Details</button>} </p> </>}
-            </li>
+            {afterLoad  ? <Loader promiseTracker={usePromiseTracker} color={'#3d5e61'} background={'rgba(255,255,255,.5)'}/> :
+            // <UserOptions movieId={movieId} movie={movie}/> 
+            <><p>This movie is not added to your movie lists.</p>
+            <p>{!inToWatch ? <button onClick={handleToWatchSubmit} className={style.towatch}>Add in To-Watch</button>
+            : <button onClick={handleRemoveToWatch} className={style.remove}>Remove from To-Watch</button>}
+            {!inWatched ? <button onClick={handleWatchedSubmit} className={style.watched}>Add in Watched</button> 
+            : inWatched && <button onClick={handleRemoveWatched} className={style.remove}>Remove from Watched</button>}
+            {<button className={style.editDetails}>Edit Movie Details</button>} </p> </>}
+           </li>
+    
+
+
             </div>
             </ul>
+            </>}
         </main>
     );
 }

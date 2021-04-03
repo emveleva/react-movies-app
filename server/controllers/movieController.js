@@ -24,7 +24,7 @@ router.get('/details/:movieId', (req, res) => {
     let movieId = req.params.movieId;
     getOne(movieId)
         .then((movie) => {
-            res.status(200).json(movie)
+            res.status(200).json({message: "success" ,movie})
     }).catch((error) => res.json(error));
 });
 
