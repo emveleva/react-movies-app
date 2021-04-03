@@ -1,5 +1,15 @@
-.towatch h1 {
-    padding: 20px;
+
+
+
+
+
+.towatch li {
+    list-style-type: none;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 10px 30px 10px 30px;
+    width: 200px;
 }
 
 .towatch ul {
@@ -9,18 +19,60 @@
     padding: 0 0 50px 0;
     margin: 0 auto;
     margin-bottom: 50px;
-    list-style: none;
-    min-height: 300px;
+    list-style-type: none;
+    min-height: 270px;
+}
+
+.noentries {
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
+
+img {
+    height: 300px;
+}
+
+.towatch button {
+    background-color: #df2935;
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 25px;
+    outline: none;
+    width: 60px;
+    margin: 5px 10px;
+
+}
+
+.addNewButton {
+    background-color: #df2935;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    width: 200px;
+    outline: none;
+}
+
+.addNewButton:hover {
+    text-decoration: underline;
+}
+
+.towatch h1 {
+    margin: 5px;
+}
+
+.towatch div {
+    height: 100%;
 }
 
 .towatch h2 {
     padding-top: 80px;
     margin: 0 auto;
     color: white;
-}
-.towatch img {
-    padding-top: 20px;
-    margin: 0 auto;
-    width: 100px;
-    height: 100px;
 }
