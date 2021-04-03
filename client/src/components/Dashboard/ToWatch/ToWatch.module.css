@@ -23,6 +23,7 @@
     min-height: 270px;
 }
 
+
 .noentries {
     padding-top: 20px;
     margin: 0 auto;
@@ -30,8 +31,11 @@
     height: 100px;
 }
 
-img {
-    height: 300px;
+.noentries img {
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
 }
 
 .towatch button {
@@ -76,3 +80,4 @@ img {
     margin: 0 auto;
     color: white;
 }
+

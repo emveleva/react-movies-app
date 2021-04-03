@@ -30,8 +30,7 @@ export default function ToWatch() {
       return fetch(`http://localhost:4003/dashboard/${user._id}`)
             .then(res => res.json())
           .then((res) => {
-              if (res.message) throw new Error(res.message);
-              setToWatch(res.toWatch)
+              if (res.message == "success") setToWatch(res.lists.toWatch)
           }).catch(err => {
               console.log(err.message)
           })

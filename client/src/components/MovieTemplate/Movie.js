@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import style from '../MovieTemplate/Movie.module.css'
 const Movie = ({
     _id,
     title,
@@ -12,7 +12,7 @@ const Movie = ({
 }) => {
 
     return (
-        <li className="otherMovie">
+        <li className={style.movie}>
             <h3>{title}</h3>
             <p className="img"><img src={posterURL} /></p>
 
