@@ -3,8 +3,6 @@ import style from './MovieDetails.module.css'
 import { AuthContext } from "../../contexts/AuthContext"
 import { usePromiseTracker } from 'react-promise-tracker';
 import Loader from 'react-promise-loader';
-import { trackPromise} from 'react-promise-tracker';
-import UserOptions from "./UserOptions"
 import { Link } from 'react-router-dom'
 
 
@@ -142,11 +140,11 @@ function fetchMovie() {
                 //     console.log(err.message)
                 // });
                 
-    // }, [match.params.movieId]);
-    // let isOwner = false;
-    // if (user._id === movie.user || user.username === 'admin'){
-    //     isOwner = true;
-    // }
+ 
+    let isOwner = false;
+    if (user._id === movie.user || user.username === 'admin'){
+        isOwner = true;
+    }
 
 
     // useEffect(() => {
@@ -271,7 +269,7 @@ function fetchMovie() {
             : <button onClick={handleRemoveToWatch} className={style.remove}>Remove from To-Watch</button>}
             {!inWatched ? <button onClick={handleWatchedSubmit} className={style.watched}>Add in Watched</button> 
             : inWatched && <button onClick={handleRemoveWatched} className={style.remove}>Remove from Watched</button>}
-            {<Link to={`/movies/details/edit/${match.params.movieId}`}><button  className={style.editDetails}> Edit Movie Details </button> </Link>} </p> </>}
+            {isOwner && <Link to={`/movies/details/edit/${match.params.movieId}`}><button  className={style.editDetails}> Edit Movie Details </button> </Link>} </p> </>}
            </li>
     
 

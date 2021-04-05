@@ -54,7 +54,7 @@ class Movies extends Component {
             <main>
                 <ul>
                 <h1 className={style.movies}>Movies</h1>
-                {/* <li className={style.search}>Search:<input type="search" name="search" /></li>    */}
+              
                 <Link to='/movies/add-new'><button className={style.addNewButton}>Add New Movie</button></Link>     
                 </ul>
                 <Genres />

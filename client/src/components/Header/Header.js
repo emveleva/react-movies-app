@@ -4,6 +4,8 @@ import style from './Header.module.css';
 import { NavLink, Redirect, Link, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext'
 
+import Search from './SearchBar/SearchBar'
+
 export default function Header() {
   const [user, setUser] = useContext(AuthContext)
   const history = useHistory();
@@ -23,13 +25,16 @@ const handleSubmit = (e) => {
       <div className={style.header}>
           <ul className={style.leftSide}>
           <li><img src="/clapperboard.png" alt="movie-logo" srcset=""/></li>
-            <li><h1>Next Movie</h1></li>
+            <li><h1>NextMovie</h1></li>
           </ul>
           <ul className={style.rightSide}>
           <li><button><NavLink to='/'><NavBar>Home</NavBar></NavLink></button></li>
           {user.username && <><li><NavLink to='/movies/all'><NavBar>Movies</NavBar></NavLink></li>
             <li><NavLink to='/dashboard'><NavBar>Dashboard</NavBar></NavLink></li>
-            <li><NavLink to='' onClick={handleSubmit}><NavBar>Logout</NavBar></NavLink></li></>}
+            <li><NavLink to='' onClick={handleSubmit}><NavBar>Logout</NavBar></NavLink></li>
+          <li><NavBar><Search /></NavBar></li></>
+            
+            }
             {!user.username && <><li><NavLink to='/register'><NavBar>Register</NavBar></NavLink></li>
             <li><NavLink to='/login'><NavBar>Login</NavBar></NavLink></li></>}
           </ul>
