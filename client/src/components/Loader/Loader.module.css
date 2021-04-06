@@ -1,16 +1,21 @@
 .loader {
+  background: #343434;
   justify-content: flex-start;
-  border-radius: 100px;
+  border-radius: 0  0 100px 100px;
   align-items: center;
   position: absolute;
-  top: 54.5px;
+  left: 42.5%;
+  top: 69px;
+  padding: 0 5px;
   display: flex;
-  height: 40px;
-  width: 80%;
+  height: 10px;
+  width: 250px;
 }
 
 .loaderValue {
-  animation: load 1s normal forwards infinite;
+  animation: load 0.5s normal forwards infinite;
+  box-shadow: 0 10px 40px -10px #343434;
+  border-radius: 0  0 100px 100px;
   background: #df2935;
   height: 5px;
   width: 0;
