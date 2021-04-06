@@ -11,6 +11,19 @@
 
 .addnew input {
     width: 300px;
+    resize: vertical;
+}
+textarea{
+    max-width: 300px;
+    background-color: #343434;
+    border: none;
+    color: lightgrey;
+    padding: 10px;
+  font-size: 16px;
+  border-radius: 25px;
+  outline: none;
+  width: 300px;
+    
 }
 
 .center {

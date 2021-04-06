@@ -13,12 +13,10 @@ const movieSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-        minlength: 10
     },
     actors: {
         type: String,
         required: true,
-        minlength: 10
     },
     posterURL: {
         type: String,

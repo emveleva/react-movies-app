@@ -4,6 +4,7 @@ const { addNew, getAll, getOne, editMovie } = require('../services/movieService'
 
 
 router.post('/add-new', (req, res) => {
+    console.log(req.body)
     addNew(req.body)
         .then((movieId) => {
             res.status(200).json(movieId)

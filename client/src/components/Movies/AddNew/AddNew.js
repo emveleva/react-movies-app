@@ -29,6 +29,7 @@ export default function AddNew() {
         .then((res) => {
             if (res.message) throw new Error(res.message);
             setMovieId(res)
+            console.log(movieId)
         }).catch(err => {
             setErrorMessage(err.message)
         });
@@ -48,6 +49,7 @@ export default function AddNew() {
                 <div className={style.leftSide}>
                     <p>Title:</p>
                     <input 
+                     
                         type="title"
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Title"
@@ -58,7 +60,7 @@ export default function AddNew() {
                         onChange={(e) => setYear(e.target.value)}
                         placeholder="2021" />
                     <p>Description:</p>
-                    <input 
+                    <textarea 
                         type="description"
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="A long time ago in a galaxy far, far away..." />

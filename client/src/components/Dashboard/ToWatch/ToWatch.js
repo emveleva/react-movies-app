@@ -1,17 +1,15 @@
 import style from './ToWatch.module.css';
 import { AuthContext } from "../../../contexts/AuthContext"
-import { useState, setState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Movie from '../../MovieTemplate/Movie';
-import { usePromiseTracker } from 'react-promise-tracker';
-import Loader from 'react-promise-loader';
-import { trackPromise} from 'react-promise-tracker';
+import Loader from '../../Loader/Loader'
 
 export default function ToWatch() {
 
-  // handle back-end
   // getToWatch
     const [user, setUser] = useContext(AuthContext);
     const [toWatch, setToWatch] = useState([])
+    const [loading, setLoading] = useState(true)
 
     // const [lists, setLists] = useState([])
     // const { promiseInProgress } = usePromiseTracker();
@@ -31,6 +29,7 @@ export default function ToWatch() {
             .then(res => res.json())
           .then((res) => {
               if (res.message == "success") setToWatch(res.lists.toWatch)
+              setLoading(false)
           }).catch(err => {
               console.log(err.message)
           })
@@ -47,16 +46,16 @@ export default function ToWatch() {
 
     return (
       <main className={style.towatch}>
-        {/* {promiseInProgress && <Loader promiseTracker={usePromiseTracker} color={'#3d5e61'} background={'rgba(255,255,255,.5)'} />} */}
+        {loading ? <Loader /> :
+        <>
           <h1>Movies to watch</h1>          
             <ul>
-            {/* {promiseInProgress ? "loading" : lists.toWatch} */}
             {toWatch && toWatch.map(movie => 
                         <Movie key={movie._id} {...movie} />
                     )}           
                        {!toWatch && <> <h2>There are no movies of this genre yet!</h2> 
                     <img className={style.noentries} src="/img/no-entries.png" alt="sad emoji"/></>}
-            </ul>
+            </ul></>}
 
       </main>
 
