@@ -7,7 +7,6 @@ router.post('/add-new', (req, res) => {
     console.log(req.body)
     addNew(req.body)
         .then((movieId) => {
-            console.log(movieId)
             res.status(200).json(movieId)
         }).catch((error) => 
         console.log(error)
