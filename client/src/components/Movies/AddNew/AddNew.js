@@ -3,6 +3,7 @@ import { AuthContext } from "../../../contexts/AuthContext"
 import ErrorHandler from "../../ErrorHandler/ErrorHandler"
 import { useState, useContext } from "react";
 import { Redirect } from 'react-router-dom';
+import TextareaAutosize from 'react-textarea-autosize';
 
 export default function AddNew() {
     const [user, setUser] = useContext(AuthContext);
@@ -60,22 +61,33 @@ export default function AddNew() {
                         onChange={(e) => setYear(e.target.value)}
                         placeholder="2021" />
                     <p>Description:</p>
-                    <textarea 
+                    <div><TextareaAutosize
+                        minRows={4}
+                        maxRows={8}
                         type="description"
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="A long time ago in a galaxy far, far away..." />
+                        </div>
                 </div>
                 <div className={style.rightSide}>
                     <p>Actors:</p>
-                    <input 
+                    <div>
+                    <TextareaAutosize 
+                        minRows={2}
+                        maxRows={4}
                         type="actors"
                         onChange={(e) => setActors(e.target.value)}
                         placeholder="Darth Vader, Luke Skywalker" />
+                        </div>
                     <p>Poster URL:</p>
-                    <input 
+                    <div>
+                    <TextareaAutosize 
+                        minRows={2}
+                        maxRows={5}
                         type="posterURL"
                         onChange={(e) => setPosterURL(e.target.value)}
                         placeholder="https://" />
+                        </div>
                     <p>Genre:</p>
                     <select name="genre"  placeholder="Select genre..."onChange={(e) => setGenre(e.target.value)} >
                         <option value="Select genre..." >Select genre...</option>

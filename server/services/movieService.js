@@ -2,8 +2,7 @@ const Movie = require('../Models/Movie');
 
 module.exports = {
     getAll: (genre) => {
-        if (genre == "all") return Movie
-            .find().lean();
+        if (genre == "all") return Movie.find().lean();
         if (genre !== "all") { 
             let movies = Movie.find({genre}).lean();
             return movies;
@@ -12,6 +11,17 @@ module.exports = {
     getOne: async (movieId) => {
         let foundMovie = await Movie.findById(movieId);
         return foundMovie;
+    },
+
+    checkDupes: (title) => {
+        Movie.find({title}).lean()
+            .then(res => {
+                if (res.length !== 0) {
+                    return res.json({
+                        message: "exists"
+                    })
+                }
+            })
     },
     addNew: async ({...movieInfo}) => {
         console.log("here")
@@ -27,13 +37,13 @@ module.exports = {
         console.log("5")
         if (movieInfo.genre == 'Select genre...') throw {message: 'Movie genre must be selected.'};
         console.log("6")
-        let urlPattern = /^(?:http(s)?:\/\/)?[\w.-].*/;
-        if (!movieInfo.posterURL.match(urlPattern)) throw {message: 'Poster URL of movie should be a valid link.'}
+        // let urlPattern = /^(?:http(s)?:\/\/)?[\w.-].*/;
+        // if (!movieInfo.posterURL.match(urlPattern)) throw {message: 'Poster URL of movie should be a valid link.'}
         console.log("7")
-        let dublicateCheck = Movie.find({title: movieInfo.title, year: movieInfo.year});
-        console.log(dublicateCheck.json())
+        let title = movieInfo.title;
+
+            
         console.log(dublicateCheck)
-        console.log("8")
         if (dublicateCheck.length !== 0) throw {message: 'There is already a movie with the same title and the same year.'}
         console.log("9")
         let movie = await new Movie({...movieInfo})

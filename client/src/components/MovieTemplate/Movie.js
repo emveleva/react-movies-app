@@ -3,12 +3,7 @@ import style from '../MovieTemplate/Movie.module.css'
 const Movie = ({
     _id,
     title,
-    year,
-    description,
-    actors,
     posterURL,
-    genre, 
-    user
 }) => {
 
     return (

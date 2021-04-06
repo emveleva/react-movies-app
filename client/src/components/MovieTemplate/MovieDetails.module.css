@@ -26,6 +26,8 @@
     width: 60%;
     padding-top: 20px;
     min-height: 370px;
+    align-self: left;
+    margin-top: 20px;
 }
 
 /* .moviedetails p{
@@ -45,16 +47,9 @@
 }
 
 .moviedetails span {
-    padding-right: 10px;
     text-decoration: underline;
 
 }
-
-.moviedetails div:last-child {
-    align-self: left;
-    margin-top: 20px;
-}
-
 
 .moviedetails button {
     border: none;

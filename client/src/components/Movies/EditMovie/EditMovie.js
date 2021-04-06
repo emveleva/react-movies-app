@@ -3,6 +3,7 @@ import { AuthContext } from "../../../contexts/AuthContext"
 import ErrorHandler from "../../ErrorHandler/ErrorHandler"
 import { useState, useContext, useEffect } from "react";
 import { Redirect } from 'react-router-dom';
+import TextareaAutosize from 'react-textarea-autosize';
 
 export default function EditMovie({match}) {
 
@@ -19,21 +20,20 @@ export default function EditMovie({match}) {
 
     useEffect(() => {
         return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`)
-                  .then(res => res.json())
+            .then(res => res.json())
                 .then((res) => {
                     if (res.message == "success") setMovie(res.movie)
-                                        console.log(res.movie)
-                                    }).catch(err => {
-                                        console.log(err.message)
-                                    });
-                        }, []);
+                        console.log(res.movie)
+                            }).catch(err => {
+                                console.log(err.message)
+                            });
+                    }, []);
 
 
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let userId = user._id
         return fetch(`http://localhost:4003/movies/details/edit/${match.params.movieId}`, {
             method: 'POST',
             headers : { 
@@ -77,26 +77,35 @@ export default function EditMovie({match}) {
                         onChange={(e) => setUpdatedYear(e.target.value)}
                         placeholder="2021" />
                     <p>Description:</p>
-                    <input 
+                    <div><TextareaAutosize
+                        minRows={4}
+                        maxRows={8} 
                         type="description"
                         defaultValue={movie.description}
                         onChange={(e) => setUpdatedDescription(e.target.value)}
                         placeholder="A long time ago in a galaxy far, far away..." />
                 </div>
+                </div>
                 <div className={style.rightSide}>
                     <p>Actors:</p>
-                    <input 
+                    <div>
+                    <TextareaAutosize 
+                        minRows={2}
+                        maxRows={4}
                         type="actors"
                         defaultValue={movie.actors}
                         onChange={(e) => setUpdatedActors(e.target.value)}
-                        placeholder="Darth Vader, Luke Skywalker" />
+                        placeholder="Darth Vader, Luke Skywalker" /></div>
                     <p>Poster URL:</p>
-                    <input 
+                    <div>
+                    <TextareaAutosize 
+                        minRows={2}
+                        maxRows={5}
                         type="posterURL"
                         contenteditable="true"
                         defaultValue={movie.posterURL}
                         onChange={(e) => setUpdatedPosterURL(e.target.value)}
-                        placeholder="https://" />
+                        placeholder="https://" /></div>
                     <p>Genre:</p>
                     <select name="genre" value={updatedGenre ? updatedGenre : movie.genre} onChange={(e) => setUpdatedGenre(e.target.value)} >
                         <option value="Select genre..." >Select genre...</option>
