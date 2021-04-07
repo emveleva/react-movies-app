@@ -1,28 +1,28 @@
 .dashboard h1 {
-    display: inline-block;
-    padding-top: 60px;
-    margin-left: 10%;
-    margin-right: 10%;
-    color: #343434;
+  display: inline-block;
+  padding-top: 60px;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: #343434;
 }
 
 .dashboard div {
-    height: 300px;
-    width: 400px;
-    background-color: #343434;
-    border-radius: 15px;
-    list-style: none;
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    margin: 10px 55px 0 55px;
+  height: 300px;
+  width: 400px;
+  background-color: #343434;
+  border-radius: 15px;
+  list-style: none;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  margin: 10px 55px 0 55px;
 }
 
 .dashboard img {
-    height: 200px;
-    padding-top: 50px;
+  height: 200px;
+  padding-top: 50px;
 }
 
 .dashboard h1:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

@@ -1,75 +1,70 @@
 .header {
-    width: 100%;
-    background-color: #343434;
-    height: 72px;
-    top: 0;
+  width: 100%;
+  background-color: #343434;
+  height: 72px;
+  top: 0;
 }
 
 .header h1 {
-    color:#df2935;
-    margin-bottom: 10px;
+  color: #df2935;
+  margin-bottom: 10px;
 }
 
 .header li {
-    display: flex;
+  display: flex;
 }
 
 .header img {
-    left: 20%;
-    height: 60px;
-    top: 30px;
+  left: 20%;
+  height: 60px;
+  top: 30px;
 }
 
 .leftSide {
-    display: flex;
-    margin-left: 155px;
-    float: left;
-    align-items: center;
+  display: flex;
+  margin-left: 155px;
+  float: left;
+  align-items: center;
 }
 
 .leftSide li {
-    float: right;
-    margin: 0 15px 0 15px;
+  float: right;
+  margin: 0 15px 0 15px;
 }
 
 .rightSide li > button {
-    background-color: #df2935;
-    border: none;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 25px;
+  background-color: #df2935;
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 25px;
 }
 
 .header ul {
-    list-style: none; 
-    padding: 0;
-    margin-top: 13px;
+  list-style: none;
+  padding: 0;
+  margin-top: 13px;
 
-
-    height:45px;
+  height: 45px;
 }
 
 .rightSide {
-    margin-right: 140px;
-    display: flex;
-    margin-left: 15px;
-    float: right;
-    align-items: center;
-    color: red;
+  margin-right: 140px;
+  display: flex;
+  margin-left: 15px;
+  float: right;
+  align-items: center;
+  color: red;
 }
 
 .rightSide li {
-    float: right;
-    margin: 0 15px 0 15px;
+  float: right;
+  margin: 0 15px 0 15px;
 }
-
 
 .header {
-    clear: both;
+  clear: both;
 }
-
-
-

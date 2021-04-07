@@ -1,5 +1,5 @@
 .searchInput {
-    background-color: #3d3d3dfb;
+  background-color: #3d3d3dfb;
   border: none;
   color: #343434;
   padding: 10px;
@@ -10,17 +10,17 @@
 }
 
 .searchButton {
-    background-color: #df2935;
-    border: none;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 0 25px 25px 0;
-    color: white
+  background-color: #df2935;
+  border: none;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 0 25px 25px 0;
+  color: white;
 }
 
 .searchInput:focus {
-    background-color: white;
+  background-color: white;
 }

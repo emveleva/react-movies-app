@@ -1,1 +1,1 @@
-export {default} from './ToWatch';
+export { default } from "./ToWatch";

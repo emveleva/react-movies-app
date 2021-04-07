@@ -1,94 +1,90 @@
 .moviedetails ul {
-    background-color: #343434;
-    border-radius: 25px;
-    width: 90%;
-    padding: 0 0 50px 0;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    list-style: none;
-    min-height: 370px;
-    color: white;
+  background-color: #343434;
+  border-radius: 25px;
+  width: 90%;
+  padding: 0 0 50px 0;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  list-style: none;
+  min-height: 370px;
+  color: white;
 }
 
 .moviedetails p {
-    text-align: left;
-    padding: 2px;
-    margin: 2px;
+  text-align: left;
+  padding: 2px;
+  margin: 2px;
 }
 .leftSide {
-    padding-top: 20px;
-    float: left;
-    width: 30%;
+  padding-top: 20px;
+  float: left;
+  width: 30%;
 }
 
-.rightSide{
-    float: left;
-    width: 60%;
-    padding-top: 20px;
-    min-height: 370px;
-    align-self: left;
-    margin-top: 20px;
+.rightSide {
+  float: left;
+  width: 60%;
+  padding-top: 20px;
+  min-height: 370px;
+  align-self: left;
+  margin-top: 20px;
 }
 
 /* .moviedetails p{
     display: inline;
 } */
 
-.moviedetails h1, h2 {
-    padding-top: 20px;
-    
+.moviedetails h1,
+h2 {
+  padding-top: 20px;
 }
 
 .moviedetails img {
-    height: 300px;
-    width: 200px;
-    object-fit: scale-down;
-    object-fit: cover;
+  height: 300px;
+  width: 200px;
+  object-fit: scale-down;
+  object-fit: cover;
 }
 
 .moviedetails span {
-    text-decoration: underline;
-
+  text-decoration: underline;
 }
 
 .moviedetails button {
-    border: none;
-    padding: 5px 10px 5px 10px;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 25px;
-    outline: none;
-    margin: 2px 5px;
-    font-weight: bold;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 25px;
+  outline: none;
+  margin: 2px 5px;
+  font-weight: bold;
 }
 
 .moviedetails li {
-    padding-top: 20px;
-    
-
+  padding-top: 20px;
 }
 
 .towatch {
-    background-color: #5271ff;
-    color: white;
-    width: 180px;
+  background-color: #5271ff;
+  color: white;
+  width: 180px;
 }
 
 .watched {
-    background-color: #34b6a6;
-    color: white;
-    width: 180px;
+  background-color: #34b6a6;
+  color: white;
+  width: 180px;
 }
 
 .editDetails {
-    background-color: rgb(250, 228, 107);
-    color: #343434;
-    width: 180px;
-
+  background-color: rgb(250, 228, 107);
+  color: #343434;
+  width: 180px;
 }
 
 .remove {
-    background-color: #df2935;
-    color: white;
-    width: 180px;
+  background-color: #df2935;
+  color: white;
+  width: 180px;
 }

@@ -1,16 +1,16 @@
 .errorStyle {
-    background-color: #df2935;
-    height: 30px;
-    position: absolute;
-    top: 72px;
-    display:block;
-    text-align: center;
-    width: 100%;
-  }
+  background-color: #df2935;
+  height: 30px;
+  position: absolute;
+  top: 72px;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
 
-  .errorStyle span {
-    position: relative;
-    padding-top: 2px;
-    color: white;
-    top: 2px;
-  }
+.errorStyle span {
+  position: relative;
+  padding-top: 2px;
+  color: white;
+  top: 2px;
+}

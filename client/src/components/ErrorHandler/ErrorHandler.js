@@ -1,17 +1,15 @@
-import style from './ErrorHandler.module.css';
+import style from "./ErrorHandler.module.css";
 
-const ErrorHandler = ({
-  children,
-}) => {
+const ErrorHandler = ({ children }) => {
   if (!children) {
-      return null;
+    return null;
   }
 
   return (
-      <div className={style.errorStyle}>
-        <span>{children}</span></div>
+    <div className={style.errorStyle}>
+      <span>{children}</span>
+    </div>
   );
-}
+};
 
-
-export default ErrorHandler
+export default ErrorHandler;

@@ -1,12 +1,11 @@
-import style from './Loader.module.css';
+import style from "./Loader.module.css";
 
 function Loader() {
-    return (
-      <div className={style.loader}>
-        <div className={style.loaderValue}></div>
-      </div>
-    );
-  }
+  return (
+    <div className={style.loader}>
+      <div className={style.loaderValue}></div>
+    </div>
+  );
+}
 
-
-export default Loader
+export default Loader;

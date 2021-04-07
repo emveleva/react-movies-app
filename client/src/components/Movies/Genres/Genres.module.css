@@ -1,38 +1,38 @@
 .genres li {
-    list-style: none;
-    display: inline-block;
-    color: white;
-    text-align: center;
+  list-style: none;
+  display: inline-block;
+  color: white;
+  text-align: center;
 }
 
 .genres a {
-    color: white;
-    text-decoration: none;
-    padding: 0 10px 0 10px;
+  color: white;
+  text-decoration: none;
+  padding: 0 10px 0 10px;
 }
 
 .genres a:hover {
-    background-color: grey;
-    border-radius: 25px;
-    padding-top: 1px;
-    padding-bottom: 3px;
+  background-color: grey;
+  border-radius: 25px;
+  padding-top: 1px;
+  padding-bottom: 3px;
 }
 
 .genres ul {
-    background-color: #343434;
-    display: inline-block;
-    border-radius: 25px;
-    align-self: center;
-    padding: 5px 10px 7px 10px;
+  background-color: #343434;
+  display: inline-block;
+  border-radius: 25px;
+  align-self: center;
+  padding: 5px 10px 7px 10px;
 }
 
 .genres li .listItem {
-    background-color: grey;
-    border-radius: 25px;
-    padding-top: 1px;
-    padding-bottom: 3px;
+  background-color: grey;
+  border-radius: 25px;
+  padding-top: 1px;
+  padding-bottom: 3px;
 }
 
 .genres {
-    height:fit-content;
+  height: fit-content;
 }

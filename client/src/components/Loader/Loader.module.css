@@ -1,10 +1,10 @@
 .loader {
   background: #343434;
   justify-content: flex-start;
-  border-radius: 0  0 100px 100px;
+  border-radius: 0 0 100px 100px;
   align-items: center;
   position: absolute;
-  left: 42.5%;
+  left: 41.5%;
   top: 69px;
   padding: 0 5px;
   display: flex;
@@ -15,13 +15,17 @@
 .loaderValue {
   animation: load 0.5s normal forwards infinite;
   box-shadow: 0 10px 40px -10px #343434;
-  border-radius: 0  0 100px 100px;
+  border-radius: 0 0 100px 100px;
   background: #df2935;
   height: 5px;
   width: 0;
 }
 
 @keyframes load {
-  0% { width: 0; }
-  100% { width: 100%; }
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }

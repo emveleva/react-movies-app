@@ -1,76 +1,70 @@
-
 .watched li {
-    list-style-type: none;
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 10px 30px 10px 30px;
-    width: 200px;
+  list-style-type: none;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 10px 30px 10px 30px;
+  width: 200px;
 }
 
 .watched ul {
-    background-color: #343434;
-    border-radius: 25px;
-    width: 90%;
-    padding: 0 0 50px 0;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    list-style-type: none;
-    min-height: 270px;
+  background-color: #343434;
+  border-radius: 25px;
+  width: 90%;
+  padding: 0 0 50px 0;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  list-style-type: none;
+  min-height: 270px;
 }
 
 .noentries {
-    padding-top: 20px;
-    margin: 0 auto;
-    width: 100px;
-    height: 100px;
+  padding-top: 20px;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
 }
 .noentries img {
-    padding-top: 20px;
-    margin: 0 auto;
-    width: 100px;
-    height: 100px;
+  padding-top: 20px;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
 }
 
-
-
 .watched button {
-    background-color: #df2935;
-    border: none;
-    color: white;
-    padding: 5px 8px;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 25px;
-    outline: none;
-    width: 60px;
-    margin: 5px 10px;
-
+  background-color: #df2935;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 25px;
+  outline: none;
+  width: 60px;
+  margin: 5px 10px;
 }
 
 .addNewButton {
-    background-color: #df2935;
-    border: none;
-    color: white;
-    padding: 10px 25px;
-    font-size: 16px;
-    border-radius: 25px;
-    width: 200px;
-    outline: none;
+  background-color: #df2935;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  font-size: 16px;
+  border-radius: 25px;
+  width: 200px;
+  outline: none;
 }
 
 .addNewButton:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .watched h1 {
-    margin: 5px;
+  margin: 5px;
 }
-
 
 .watched h2 {
-    padding-top: 80px;
-    margin: 0 auto;
-    color: white;
+  padding-top: 80px;
+  margin: 0 auto;
+  color: white;
 }
-

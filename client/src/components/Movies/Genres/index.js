@@ -1,1 +1,1 @@
-export {default} from './Genres';
+export { default } from "./Genres";

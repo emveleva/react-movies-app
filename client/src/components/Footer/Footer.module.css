@@ -1,14 +1,14 @@
 .footer {
-    width: 100%;
-    background-color: #343434;
-    height: 73px;
-    color: white;
-    bottom: 0;
-    display: flex;
-  }
-  
-  .footer p {
-    display: block;
-    margin: 0 auto;
-    padding-top: 25px;
-  }
+  width: 100%;
+  background-color: #343434;
+  height: 73px;
+  color: white;
+  bottom: 0;
+  display: flex;
+}
+
+.footer p {
+  display: block;
+  margin: 0 auto;
+  padding-top: 25px;
+}

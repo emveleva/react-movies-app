@@ -1,7 +1,7 @@
 .navListItem {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 .navListItem:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
