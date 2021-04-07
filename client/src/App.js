@@ -33,7 +33,7 @@ function App() {
           <Route path='/' exact component={Home} />        
           <Route path='/register' component={Register} />
           <PrivateRoute path="/movies/details/:movieId" exact component={MovieDetails} />
-          <PrivateRoute path="/movies/search/results" component={SearchResults}/>
+          <PrivateRoute path="/movies/search/results/:query" component={SearchResults}/>
           <PrivateRoute path='/movies/details/edit/:movieId' exact component={EditMovie} />
           <PrivateRoute path='/movies/add-new' exact component={AddNew} />
           <PrivateRoute path='/movies/:genre' exact component={Movies} />

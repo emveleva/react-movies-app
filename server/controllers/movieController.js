@@ -49,7 +49,7 @@ router.post('/details/edit/:movieId', (req, res) => {
         res.status(200).json({message: "edited"})
     }).catch((error) => res.json(error));
 });
-router.get('/search/:query', (req, res) => {
+router.get('/search/results/:query', (req, res) => {
     let query = req.params.query;
     searchMovie(query)
     .then((movies) => {
