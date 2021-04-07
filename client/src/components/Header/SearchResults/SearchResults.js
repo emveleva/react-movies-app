@@ -5,19 +5,19 @@ import Loader from '../../Loader/Loader'
 import { AuthContext } from '../../../contexts/AuthContext';
 
 
-export default function SearchResults () {
-    const [query, setQuery] = useState('');
+export default function SearchResults (props) {
+    const [user, setUser] = useContext(AuthContext);
+    const query = props.match.params.query;
     const [movies, setMovies] = useState([])
     const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
-        fetch(`http://localhost:4003/movies/search/results/${query}`)
+        fetch(`http://localhost:4003/movies/results/${query}`)
     .then(res => res.json())
     .then((res) => {
         console.log('here')
         if (res.message == "found") setMovies(res.movies)
-        setQuery('')
         setLoading(false)
         console.log('here')
                 }).catch(err => {
