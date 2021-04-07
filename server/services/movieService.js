@@ -33,6 +33,11 @@ module.exports = {
         if (isEmpty) throw {message: `Please don't leave the fields empty.`};
         let movie = await Movie.updateOne({_id: movieId}, editedMovieInfo);
         return movie
-    } 
+    },
+    searchMovie: async (query) => {
+        let moviesFound = Movie.find( { title : {$regex : String(query), $options: "i"} } )
+        return moviesFound
+    }   
+
 }
 

@@ -4,7 +4,7 @@ import style from './Header.module.css';
 import { NavLink, Redirect, Link, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext'
 
-import Search from './SearchBar/SearchBar'
+import SearchBar from './SearchBar/'
 
 export default function Header() {
   const [user, setUser] = useContext(AuthContext)
@@ -32,7 +32,7 @@ const handleSubmit = (e) => {
           {user.username && <><li><NavLink to='/movies/all'><NavBar>Movies</NavBar></NavLink></li>
             <li><NavLink to='/dashboard'><NavBar>Dashboard</NavBar></NavLink></li>
             <li><NavLink to='' onClick={handleSubmit}><NavBar>Logout</NavBar></NavLink></li>
-          <li><NavBar><Search /></NavBar></li></>
+          <li><NavBar><SearchBar /></NavBar></li></>
             
             }
             {!user.username && <><li><NavLink to='/register'><NavBar>Register</NavBar></NavLink></li>

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const isAuth = require('../middlewares/isAuth');
-const { addNew, getAll, getOne, editMovie } = require('../services/movieService')
+const { addNew, getAll, getOne, editMovie, searchMovie } = require('../services/movieService')
 
 
 router.post('/add-new', (req, res) => {
@@ -49,7 +49,13 @@ router.post('/details/edit/:movieId', (req, res) => {
         res.status(200).json({message: "edited"})
     }).catch((error) => res.json(error));
 });
-
+router.get('/search/:query', (req, res) => {
+    let query = req.params.query;
+    searchMovie(query)
+    .then((movies) => {
+        res.status(200).json({message: "found", movies})
+    }).catch((error) => res.json(error));
+});
 
 
 

@@ -14,10 +14,12 @@ import MovieDetails from './components/MovieTemplate/MovieDetails'
 import EditMovie from './components/Movies/EditMovie/EditMovie'
 import { AuthProvider } from "./contexts/AuthContext"
 import PrivateRoute from "./components/PrivateRoute"
+import SearchResults from './components/Header/SearchResults/'
 
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom'
 import './App.css';
+
 
 
 
@@ -31,7 +33,8 @@ function App() {
           <Route path='/' exact component={Home} />        
           <Route path='/register' component={Register} />
           <PrivateRoute path="/movies/details/:movieId" exact component={MovieDetails} />
-          <Route path='/movies/details/edit/:movieId' exact component={EditMovie} />
+          <PrivateRoute path="/movies/search/results" component={SearchResults}/>
+          <PrivateRoute path='/movies/details/edit/:movieId' exact component={EditMovie} />
           <PrivateRoute path='/movies/add-new' exact component={AddNew} />
           <PrivateRoute path='/movies/:genre' exact component={Movies} />
           <PrivateRoute path='/dashboard/to-watch' component={ToWatch} />

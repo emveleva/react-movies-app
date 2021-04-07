@@ -1,4 +1,4 @@
-.movies li {
+.results li {
     list-style-type: none;
     display: inline-block;
     color: white;
@@ -7,7 +7,7 @@
     width: 200px;
 }
 
-.movies ul {
+.results ul {
     background-color: #343434;
     border-radius: 25px;
     width: 90%;
@@ -33,45 +33,15 @@
 }
 
 
-
-.movies button {
-    background-color: #df2935;
-    border: none;
-    color: white;
-    padding: 5px 8px;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 25px;
-    outline: none;
-    width: 60px;
-    margin: 5px 10px;
-
-}
-
-.addNewButton {
-    background-color: #df2935;
-    border: none;
-    color: white;
-    padding: 10px 25px;
-    font-size: 16px;
-    border-radius: 25px;
-    width: 200px;
-    outline: none;
-}
-
-.addNewButton:hover {
-    text-decoration: underline;
-}
-
-.movies h1 {
+.results h1 {
     margin: 5px;
 }
 
-.movies div {
+.results div {
     height: 100%;
 }
 
-.movies h2 {
+.results h2 {
     padding-top: 80px;
     margin: 0 auto;
     color: white;
