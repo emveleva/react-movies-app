@@ -3,6 +3,7 @@ import Movie from "../../MovieTemplate/Movie";
 import style from "./SearchResults.module.css";
 import Loader from "../../Loader/Loader";
 import { withRouter } from "react-router-dom";
+import { fetchQuery } from '../../../services/authService'
 
 const SearchResults = (props) => {
   const query = props.match.params.query;
@@ -10,8 +11,7 @@ const SearchResults = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:4003/results/${query}`)
-      .then((res) => res.json())
+    fetchQuery(query)
       .then((res) => {
         console.log("here");
         if (res.message === "found") setMovies(res.movies);

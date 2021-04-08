@@ -83,6 +83,7 @@ export default function MovieDetails({ match }) {
       .catch((err) => {
         console.log(err.message);
       });
+      
   };
   // removes movie from to-watch
   const handleRemoveToWatch = (e) => {

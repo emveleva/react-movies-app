@@ -3,6 +3,8 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { useState, useEffect, useContext } from "react";
 import Movie from "../../MovieTemplate/Movie";
 import Loader from "../../Loader/Loader";
+import { userToWatch } from '../../../services/dashboardService';
+
 
 export default function ToWatch() {
   const [user] = useContext(AuthContext);
@@ -10,9 +12,7 @@ export default function ToWatch() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("second");
-    return fetch(`http://localhost:4003/dashboard/${user._id}`)
-      .then((res) => res.json())
+    userToWatch(user._id)
       .then((res) => {
         if (res.message === "success") setToWatch(res.lists.toWatch);
         setLoading(false);

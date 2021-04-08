@@ -3,6 +3,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { useState, useEffect, useContext } from "react";
 import Movie from "../../MovieTemplate/Movie";
 import Loader from "../../Loader/Loader";
+import { userWatched } from '../../../services/dashboardService'
 
 function Watched() {
   // handle back-end
@@ -11,9 +12,7 @@ function Watched() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("second");
-    return fetch(`http://localhost:4003/dashboard/${user._id}`)
-      .then((res) => res.json())
+    userWatched(user._id)
       .then((res) => {
         if (res.message === "success") setWatched(res.lists.watched);
         setLoading(false);

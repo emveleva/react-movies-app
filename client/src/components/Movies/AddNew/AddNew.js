@@ -4,6 +4,7 @@ import ErrorHandler from "../../ErrorHandler/ErrorHandler";
 import { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
+import { addNewMovie } from '../../../services/movieService'
 
 export default function AddNew() {
   const [user] = useContext(AuthContext);
@@ -15,27 +16,11 @@ export default function AddNew() {
   const [genre, setGenre] = useState("Select genre...");
   const [errorMessage, setErrorMessage] = useState("");
   const [movieId, setMovieId] = useState("");
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let userId = user._id;
-    return fetch("http://localhost:4003/movies/add-new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        title,
-        year,
-        description,
-        actors,
-        posterURL,
-        genre,
-        user: userId,
-      }),
-    })
-      .then((res) => res.json())
+    addNewMovie({title, year, description, actors, posterURL, genre, user: user._id})
       .then((res) => {
         if (res.message !== "added") throw new Error(res.message);
         if (res.message === "added") setMovieId(res.movieId)
@@ -61,7 +46,6 @@ export default function AddNew() {
                 type="title"
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Title"
-                required
               />
               <p>Year:</p>
               <input

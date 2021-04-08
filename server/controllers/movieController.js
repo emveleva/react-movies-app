@@ -54,7 +54,7 @@ router.post("/add-new", (req, res) => {
 		.then((movieId) => {
 			res.status(200).json({message: "added", movieId});
 		})
-		.catch((error) => console.log(error));
+		.catch((error) => res.json(error));
 });
 
 module.exports = router;

@@ -4,6 +4,7 @@ import style from "./Header.module.css";
 import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import SearchBar from "../Header/SearchBar";
+import { logout } from '../../services/authService'
 
 export default function Header() {
   const [user, setUser] = useContext(AuthContext);
@@ -12,9 +13,7 @@ export default function Header() {
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    return fetch("http://localhost:4003/logout")
-      .then((res) => res.json())
+    logout()
       .then((res) => {
         setUser({ username: "", _id: "" });
         history.push("/logout");
@@ -66,7 +65,7 @@ export default function Header() {
               </NavLink>
             </li>
             <li
-              onCLick={(e) =>
+              onClick={(e) =>
                 query ? handleQuery(e) : setEnteredQuery(!enteredQuery)
               }
             >

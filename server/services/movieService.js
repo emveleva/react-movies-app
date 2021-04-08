@@ -39,7 +39,7 @@ module.exports = {
   },
   editMovie: async (movieId, editedMovieInfo) => {
     const isEmpty = !Object.values(editedMovieInfo).some((x) => x !== "");
-    if (isEmpty) throw { message: `Please don't leave the fields empty.` };
+    if (isEmpty) throw { message: `No changes were detected.`};
     let movie = await Movie.updateOne({ _id: movieId }, editedMovieInfo);
     return movie;
   },

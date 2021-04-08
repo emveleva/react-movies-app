@@ -68,6 +68,10 @@ select {
   outline: 0;
 }
 
+.form button:disabled {
+  background-color: #343434;
+}
+
 .title {
   padding-top: 40px;
 }

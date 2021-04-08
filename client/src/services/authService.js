@@ -12,4 +12,13 @@ const loginUser = (username, password) => {
     body: JSON.stringify({ username, password }),
   }).then((res) => res.json());
 };
-export { registerUser, loginUser };
+const logout = () => {
+return fetch("http://localhost:4003/logout")
+.then((res) => res.json())
+};
+
+const fetchQuery = (query) => {
+ return fetch(`http://localhost:4003/results/${query}`)
+.then((res) => res.json())
+};
+export { registerUser, loginUser, logout, fetchQuery };

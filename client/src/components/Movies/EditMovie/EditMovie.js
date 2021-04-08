@@ -3,54 +3,47 @@ import ErrorHandler from "../../ErrorHandler/ErrorHandler";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
+import { getMovieToEdit } from '../../../services/movieService'
+import { editMoviePost } from "../../../services/movieService";
 
 export default function EditMovie({ match }) {
   const [movie, setMovie] = useState({});
-  const [updatedTitle, setUpdatedTitle] = useState(movie.title);
-  const [updatedYear, setUpdatedYear] = useState(movie.year);
-  const [updatedDescription, setUpdatedDescription] = useState(
-    movie.description
-  );
-  const [updatedActors, setUpdatedActors] = useState(movie.actors);
-  const [updatedPosterURL, setUpdatedPosterURL] = useState(movie.posterURL);
-  const [updatedGenre, setUpdatedGenre] = useState(movie.genre);
+  const [updatedTitle, setUpdatedTitle] = useState("");
+  const [updatedYear, setUpdatedYear] = useState("");
+  const [updatedDescription, setUpdatedDescription] = useState("");
+  const [updatedActors, setUpdatedActors] = useState("");
+  const [updatedPosterURL, setUpdatedPosterURL] = useState("");
+  const [updatedGenre, setUpdatedGenre] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    return fetch(
-      `http://localhost:4003/movies/details/edit/${match.params.movieId}`
-    )
-      .then((res) => res.json())
+    getMovieToEdit(match.params.movieId)
       .then((res) => {
-        if (res.message === "success") setMovie(res.movie);
+        if (res.message === "success") setMovie(res.movie)
       })
       .catch((err) => {
         console.log(err.message);
       });
-  });
+  }, [match.params.movieId]);
 
-  const handleSubmit = (e) => {
+
+const handleInput = (e) => {
+  if (e.target.value.length === 0){
+    setErrorMessage(`${e.target.id} cannot be empty.`)
+    setError(true)
+  } else {
+    setErrorMessage('')
+    setError(false)
+  }
+}
+
+
+
+  const handleSubmit = (e) => {    
     e.preventDefault();
-    return fetch(
-      `http://localhost:4003/movies/details/edit/${match.params.movieId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          title: updatedTitle,
-          year: updatedYear,
-          description: updatedDescription,
-          actors: updatedActors,
-          posterURL: updatedPosterURL,
-          genre: updatedGenre,
-        }),
-      }
-    )
-      .then((res) => res.json())
+    editMoviePost(match.params.movieId, updatedTitle, updatedYear, updatedDescription, updatedPosterURL, updatedGenre)
       .then((res) => {
         if (res.message !== "edited") throw new Error(res.message);
         if (res.message === "edited") setFeedback("next");
@@ -74,6 +67,8 @@ export default function EditMovie({ match }) {
             <div className={style.leftSide}>
               <p>Title:</p>
               <input
+                id="Movie title"
+                onInput={handleInput}
                 type="title"
                 defaultValue={movie.title}
                 onChange={(e) => setUpdatedTitle(e.target.value)}
@@ -81,6 +76,8 @@ export default function EditMovie({ match }) {
               />
               <p>Year:</p>
               <input
+                id="Movie year"
+                onInput={handleInput}
                 type="year"
                 defaultValue={movie.year}
                 onChange={(e) => setUpdatedYear(e.target.value)}
@@ -89,6 +86,8 @@ export default function EditMovie({ match }) {
               <p>Description:</p>
               <div>
                 <TextareaAutosize
+                  id="Movie description"
+                  onInput={handleInput}
                   className={style.textarea}
                   minRows={4}
                   maxRows={8}
@@ -103,6 +102,8 @@ export default function EditMovie({ match }) {
               <p>Actors:</p>
               <div>
                 <TextareaAutosize
+                  id="Movie actors"
+                  onInput={handleInput}
                   className={style.textarea}
                   minRows={2}
                   maxRows={4}
@@ -115,6 +116,8 @@ export default function EditMovie({ match }) {
               <p>Poster URL:</p>
               <div>
                 <TextareaAutosize
+                  id="Movie poster"
+                  onInput={handleInput}
                   className={style.textarea}
                   minRows={2}
                   maxRows={5}
@@ -131,7 +134,7 @@ export default function EditMovie({ match }) {
                 value={updatedGenre ? updatedGenre : movie.genre}
                 onChange={(e) => setUpdatedGenre(e.target.value)}
               >
-                <option value="Select genre...">Select genre...</option>
+                <option value="">Select genre...</option>
                 <option value="Action">Action</option>
                 <option value="Adventure">Adventure</option>
                 <option value="Animation">Animation</option>
@@ -147,7 +150,7 @@ export default function EditMovie({ match }) {
               </select>
             </div>
             <div className={style.center}>
-              <button type="submit">Edit</button>
+              <button disabled={error} type="submit">Edit</button>
             </div>
           </form>
         </div>

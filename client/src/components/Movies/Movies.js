@@ -4,6 +4,7 @@ import Genres from "./Genres";
 import style from "./Movies.module.css";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import { fetchAllMovies, fetchAllMoviesGenre } from '../../services/movieService';
 
 class Movies extends Component {
   constructor(props) {
@@ -17,8 +18,7 @@ class Movies extends Component {
   }
 
   componentDidMount() {
-    return fetch(`http://localhost:4003/movies/all`)
-      .then((res) => res.json())
+    fetchAllMovies()
       .then((res) => {
         if (res.message) throw new Error(res.message);
         this.setState({ movies: res, loading: false });
@@ -35,8 +35,7 @@ class Movies extends Component {
     console.log(genre);
     if (prevProps.match.params.genre !== genre) {
       this.setState({ loading: true });
-      return fetch(`http://localhost:4003/movies/${genre}`)
-        .then((res) => res.json())
+      fetchAllMoviesGenre(genre)
         .then((res) => {
           if (res.message) throw new Error(res.message);
           this.setState({ movies: res, currentGenre: genre, loading: false });
