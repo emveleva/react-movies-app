@@ -25,11 +25,9 @@ async function getLists(userId) {
   return lists;
 }
 async function searchMovie(query) {
-  console.log("query");
   let moviesFound = Movie.find({
     title: { $regex: String(query), $options: "i" },
   });
-  console.log(moviesFound);
   return moviesFound;
 }
 

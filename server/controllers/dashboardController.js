@@ -50,7 +50,6 @@ router.delete("/to-watch", (req, res) => {
 
 router.delete("/watched", (req, res) => {
   let data = req.body;
-  console.log(data);
   deleteWatched(req.body)
     .then(() => {
       res.status(200).json({ message: "removed" });

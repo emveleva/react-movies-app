@@ -22,8 +22,6 @@ export default function ToWatch() {
       });
   });
 
-  console.log(toWatch);
-
   return (
     <main className={style.towatch}>
       {loading ? (

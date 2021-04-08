@@ -8,15 +8,17 @@ import { editMoviePost } from "../../../services/movieService";
 
 export default function EditMovie({ match }) {
   const [movie, setMovie] = useState({});
-  const [updatedTitle, setUpdatedTitle] = useState("");
-  const [updatedYear, setUpdatedYear] = useState("");
-  const [updatedDescription, setUpdatedDescription] = useState("");
-  const [updatedActors, setUpdatedActors] = useState("");
-  const [updatedPosterURL, setUpdatedPosterURL] = useState("");
-  const [updatedGenre, setUpdatedGenre] = useState("");
+  const [updatedTitle, setUpdatedTitle] = useState(movie.title);
+  const [updatedYear, setUpdatedYear] = useState(movie.year);
+  const [updatedDescription, setUpdatedDescription] = useState(movie.description);
+  const [updatedActors, setUpdatedActors] = useState(movie.actors);
+  const [updatedPosterURL, setUpdatedPosterURL] = useState(movie.posterURL);
+  const [updatedGenre, setUpdatedGenre] = useState(movie.genre);
   const [errorMessage, setErrorMessage] = useState("");
   const [feedback, setFeedback] = useState("");
   const [error, setError] = useState(false);
+  const [updatedMovie, setUpdatedMovie] = useState({})
+  const [change, setChange] = useState(false)
 
   useEffect(() => {
     getMovieToEdit(match.params.movieId)
@@ -28,22 +30,21 @@ export default function EditMovie({ match }) {
       });
   }, [match.params.movieId]);
 
-
 const handleInput = (e) => {
+  setChange(true)
   if (e.target.value.length === 0){
     setErrorMessage(`${e.target.id} cannot be empty.`)
     setError(true)
+ 
   } else {
     setErrorMessage('')
     setError(false)
   }
 }
 
-
-
   const handleSubmit = (e) => {    
     e.preventDefault();
-    editMoviePost(match.params.movieId, updatedTitle, updatedYear, updatedDescription, updatedPosterURL, updatedGenre)
+    editMoviePost(match.params.movieId, updatedTitle, updatedYear, updatedDescription, updatedActors, updatedPosterURL, updatedGenre)
       .then((res) => {
         if (res.message !== "edited") throw new Error(res.message);
         if (res.message === "edited") setFeedback("next");
@@ -54,7 +55,6 @@ const handleInput = (e) => {
   };
 
   if (feedback) {
-    console.log(feedback);
     return <Redirect to={`/movies/details/${match.params.movieId}`} />;
   }
   return (
@@ -133,6 +133,7 @@ const handleInput = (e) => {
                 name="genre"
                 value={updatedGenre ? updatedGenre : movie.genre}
                 onChange={(e) => setUpdatedGenre(e.target.value)}
+                onInput={(e) => setChange(true)}
               >
                 <option value="">Select genre...</option>
                 <option value="Action">Action</option>
@@ -150,7 +151,7 @@ const handleInput = (e) => {
               </select>
             </div>
             <div className={style.center}>
-              <button disabled={error} type="submit">Edit</button>
+              <button disabled={error || !change} type="submit">Edit</button>
             </div>
           </form>
         </div>

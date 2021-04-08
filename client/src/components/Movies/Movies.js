@@ -22,9 +22,6 @@ class Movies extends Component {
       .then((res) => {
         if (res.message) throw new Error(res.message);
         this.setState({ movies: res, loading: false });
-
-        console.log(this.state.movies);
-        console.log(this.state.movies.length);
       })
       .catch((err) => {
         console.log(err.message);
@@ -32,14 +29,12 @@ class Movies extends Component {
   }
   componentDidUpdate(prevProps) {
     const genre = this.props.match.params.genre;
-    console.log(genre);
     if (prevProps.match.params.genre !== genre) {
       this.setState({ loading: true });
       fetchAllMoviesGenre(genre)
         .then((res) => {
           if (res.message) throw new Error(res.message);
           this.setState({ movies: res, currentGenre: genre, loading: false });
-          console.log(this.state.movies);
         })
         .catch((err) => {
           console.log(err.message);

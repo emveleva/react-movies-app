@@ -16,7 +16,6 @@ router.get("/logout", (req, res) => {
 
 router.get("/results/:query", (req, res) => {
 	let query = req.params.query;
-	console.log("query" + query);
 	searchMovie(query)
 	  .then((movies) => {
 		res.status(200).json({ message: "found", movies });

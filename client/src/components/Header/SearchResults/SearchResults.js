@@ -13,10 +13,8 @@ const SearchResults = (props) => {
   useEffect(() => {
     fetchQuery(query)
       .then((res) => {
-        console.log("here");
         if (res.message === "found") setMovies(res.movies);
         setLoading(false);
-        console.log(res.movies);
       })
       .catch((err) => {
         console.log(err.message);
