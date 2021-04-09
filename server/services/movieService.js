@@ -16,6 +16,7 @@ module.exports = {
     if (movieInfo.title == "")
       throw { message: "Movie title cannot be empty." };
     if (movieInfo.year == "") throw { message: "Movie year cannot be empty." };
+    if (movieInfo.year.length < 4) throw { message: "Movie year must have 4 characters." };
     if (movieInfo.description == "")
       throw { message: "Movie description cannot be empty." };
     if (movieInfo.description.length > 700)
@@ -26,12 +27,12 @@ module.exports = {
       throw { message: "Movie poster cannot be empty." };
     if (movieInfo.genre == "Select genre...")
       throw { message: "Movie genre must be selected." };
-    let urlPattern = /^(?:http(s)?:\/\/)?[\w.-].*/;
-    if (!movieInfo.posterURL.match(urlPattern))
+    let match = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g.test(movieInfo.posterURL);
+    if (!match)
       throw { message: "Poster URL of movie should be a valid link." };
-    let foundMovie = Movie.findOne({ title: { $eq: movieInfo.title } });
-    if (foundMovie)
-      throw { message: "A movie with the same title and year already exists." };
+    let found = await Movie.find({ title: movieInfo.title })
+    console.log(found)
+      if (found.length > 0) throw { message: "A movie with the same title already exists." }
     let movie = await new Movie({ ...movieInfo });
     let movieId = movie._id;
     movie.save();
