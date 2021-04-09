@@ -122,7 +122,6 @@ const handleInput = (e) => {
                   minRows={2}
                   maxRows={5}
                   type="posterURL"
-                  contenteditable="true"
                   defaultValue={movie.posterURL}
                   onChange={(e) => setUpdatedPosterURL(e.target.value)}
                   placeholder="https://"

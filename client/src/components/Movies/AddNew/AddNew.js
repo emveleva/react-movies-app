@@ -20,7 +20,6 @@ export default function AddNew() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(posterURL)
     addNewMovie({title, year, description, actors, posterURL, genre, user: user._id})
       .then((res) => {
         if (res.message !== "added") throw new Error(res.message);

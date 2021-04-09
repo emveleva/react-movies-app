@@ -31,8 +31,8 @@ module.exports = {
     if (!match)
       throw { message: "Poster URL of movie should be a valid link." };
     let found = await Movie.find({ title: movieInfo.title })
-    console.log(found)
-      if (found.length > 0) throw { message: "A movie with the same title already exists." }
+      if (found.length > 0) 
+      throw { message: "A movie with the same title already exists." }
     let movie = await new Movie({ ...movieInfo });
     let movieId = movie._id;
     movie.save();
