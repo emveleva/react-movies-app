@@ -18,13 +18,10 @@ class ToWatch extends Component {
 
   componentDidMount() {
     let [user] = this.context;
-    console.log(user)
     userToWatch(user._id)
     .then((res) => {
               if (res.message === "success");
-              console.log(res)
               this.setState({ moviesToWatch: res.lists.toWatch, loading: false });
-              console.log(this.state.moviesToWatch)
             })
             .catch((err) => {
               console.log(err.message);

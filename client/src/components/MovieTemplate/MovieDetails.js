@@ -25,11 +25,9 @@ export default function MovieDetails({ match }) {
   //get movie and user lists
   useEffect(() => {
     setIsLoading(true);
-    console.log(match.params.movieId)
     fetchMovie(match.params.movieId)
       .then((res) => {
         if (res.message === "success") {
-          console.log(res.movie);
           setMovie(res.movie);
           setIsLoading(false);
       }})

@@ -29,7 +29,6 @@ export default function Register() {
   };
 
   if (user.username !== "") {
-    console.log(user.username);
     return <Redirect to="/" />;
   }
   return (

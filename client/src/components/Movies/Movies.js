@@ -24,7 +24,6 @@ class Movies extends Component {
       .then((res) => {
         if (res.message) throw new Error(res.message);
         this.setState({ movies: res, loading: false });
-        console.log(this.state.movies)
       })
       .catch((err) => {
         console.log(err.message);
