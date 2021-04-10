@@ -25,16 +25,22 @@ export default function MovieDetails({ match }) {
   //get movie and user lists
   useEffect(() => {
     setIsLoading(true);
+    console.log(match.params.movieId)
     fetchMovie(match.params.movieId)
       .then((res) => {
-        if (res.message === "success") setMovie(res.movie);
-      })
+        if (res.message === "success") {
+          console.log(res.movie);
+          setMovie(res.movie);
+          setIsLoading(false);
+      }})
       .catch((err) => {
         console.log(err.message);
       });
   }, [match.params.movieId]);
 
+
   useEffect(() => {
+    setIsLoading(true);
     fetchLists(user._id)
       .then((res) => {
         if (res.message === "success") setToWatch(res.lists.toWatch);
@@ -51,13 +57,16 @@ export default function MovieDetails({ match }) {
       })
       .catch((err) => {
         console.log(err.message);
-      });
+      });   
   }, [movie]);
 
   let isOwner = false;
-  if (user._id === movie.user || user.username === "admin") {
-    isOwner = true;
-  }
+console.log(user._id)
+console.log(movie)
+// console.log(user._id === movie.user)
+  // if (user._id === movie.user || user.username === "admin") {
+  //   isOwner = true;
+  //     } 
 
   // adds movie in to-watch
   const handleToWatchSubmit = (e) => {

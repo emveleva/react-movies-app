@@ -1,38 +1,51 @@
 import style from "./ToWatch.module.css";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useState, useEffect, useContext } from "react";
+import { Component, useState, useEffect, useContext } from "react";
 import Movie from "../../MovieTemplate/Movie";
 import Loader from "../../Loader/Loader";
 import { userToWatch } from '../../../services/dashboardService';
+import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
 
 
-export default function ToWatch() {
-  const [user] = useContext(AuthContext);
-  const [toWatch, setToWatch] = useState([]);
-  const [loading, setLoading] = useState(true);
+class ToWatch extends Component {
+  static contextType = AuthContext;
+  constructor(props) {
+    super(props);
 
-  useEffect(() => {
+    this.state = {
+      moviesToWatch: [],
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    let [user] = this.context;
+    console.log(user)
     userToWatch(user._id)
-      .then((res) => {
-        if (res.message === "success") setToWatch(res.lists.toWatch);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  });
+    .then((res) => {
+              if (res.message === "success");
+              console.log(res)
+              this.setState({ moviesToWatch: res.lists.toWatch, loading: false });
+              console.log(this.state.moviesToWatch)
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+  }
+  
+render() {
 
   return (
     <main className={style.towatch}>
-      {loading ? (
+      {this.state.loading ? (
         <Loader />
       ) : (
         <>
           <h1>Movies to watch</h1>
           <ul>
-            {toWatch &&
-              toWatch.map((movie) => <Movie key={movie._id} {...movie} />)}
-            {!toWatch && (
+            {this.state.moviesToWatch.length !== 0 &&
+              this.state.moviesToWatch.map((movie) => <Movie key={movie._id} {...movie} />)}
+            {!this.state.moviesToWatch.length === 0 && (
               <>
                 {" "}
                 <h2>There are no movies of this genre yet!</h2>
@@ -48,4 +61,7 @@ export default function ToWatch() {
       )}
     </main>
   );
-}
+}}
+
+export default ToWatch;
+
