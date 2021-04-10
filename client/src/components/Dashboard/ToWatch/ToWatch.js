@@ -1,11 +1,9 @@
 import style from "./ToWatch.module.css";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Component, useState, useEffect, useContext } from "react";
+import { Component } from "react";
 import Movie from "../../MovieTemplate/Movie";
 import Loader from "../../Loader/Loader";
 import { userToWatch } from '../../../services/dashboardService';
-import { faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
-
 
 class ToWatch extends Component {
   static contextType = AuthContext;
@@ -32,7 +30,7 @@ class ToWatch extends Component {
               console.log(err.message);
             });
   }
-  
+
 render() {
 
   return (
@@ -45,7 +43,7 @@ render() {
           <ul>
             {this.state.moviesToWatch.length !== 0 &&
               this.state.moviesToWatch.map((movie) => <Movie key={movie._id} {...movie} />)}
-            {!this.state.moviesToWatch.length === 0 && (
+            {this.state.moviesToWatch.length === 0 && (
               <>
                 {" "}
                 <h2>There are no movies of this genre yet!</h2>

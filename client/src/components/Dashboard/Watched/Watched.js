@@ -6,7 +6,6 @@ import Loader from "../../Loader/Loader";
 import { userWatched } from '../../../services/dashboardService'
 
 function Watched() {
-  // handle back-end
   const [user] = useContext(AuthContext);
   const [watched, setWatched] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,8 +19,8 @@ function Watched() {
       .catch((err) => {
         console.log(err.message);
       });
-  });
-  // get watched
+  }, []);
+
   return (
     <main className={style.watched}>
       {loading ? (
@@ -32,7 +31,7 @@ function Watched() {
           <ul>
             {watched &&
               watched.map((movie) => <Movie key={movie._id} {...movie} />)}
-            {!watched && (
+            {watched.length === 0 && (
               <>
                 {" "}
                 <h2>There are no movies of this genre yet!</h2>

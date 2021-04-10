@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { Link } from "react-router-dom";
 import style from "../MovieTemplate/Movie.module.css";
-import { useAuth } from "../../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Movie = ({ _id, title, posterURL }) => {
-  const { user } = useAuth();
+  const [user] = useContext(AuthContext)
   return (
     <li className={style.movie}>
       <h3>{title}</h3>

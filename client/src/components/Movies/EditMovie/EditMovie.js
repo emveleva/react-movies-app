@@ -17,7 +17,6 @@ export default function EditMovie({ match }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [feedback, setFeedback] = useState("");
   const [error, setError] = useState(false);
-  const [updatedMovie, setUpdatedMovie] = useState({})
   const [change, setChange] = useState(false)
 
   useEffect(() => {
