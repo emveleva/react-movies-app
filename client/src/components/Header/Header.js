@@ -11,6 +11,7 @@ export default function Header() {
   const [enteredQuery, setEnteredQuery] = useState(false);
   const [query, setQuery] = useState("");
   const history = useHistory();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     logout()
