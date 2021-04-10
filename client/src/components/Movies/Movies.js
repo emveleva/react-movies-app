@@ -5,8 +5,10 @@ import style from "./Movies.module.css";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import { fetchAllMovies, fetchAllMoviesGenre } from '../../services/movieService';
+import { AuthContext } from '../../contexts/AuthContext'
 
 class Movies extends Component {
+  static contextType = AuthContext;
   constructor(props) {
     super(props);
 
@@ -43,13 +45,14 @@ class Movies extends Component {
   }
 
   render() {
+    let [user] = this.context;
     return (
       <main>
         <ul>
           <h1 className={style.movies}>Movies</h1>
-          <Link to="/movies/add-new">
+          {user._id && <Link to="/movies/add-new">
             <button className={style.addNewButton}>Add New Movie</button>
-          </Link>
+          </Link>}
         </ul>
         <Genres />
         {this.state.loading ? (

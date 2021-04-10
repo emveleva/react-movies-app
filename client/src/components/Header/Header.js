@@ -79,6 +79,11 @@ export default function Header() {
         {!user.username && (
           <>
             <li>
+              <NavLink to="/movies/all">
+                <NavBar>Movies</NavBar>
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/register">
                 <NavBar>Register</NavBar>
               </NavLink>

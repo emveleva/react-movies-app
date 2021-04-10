@@ -29,7 +29,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/register" component={Register} />
-            <PrivateRoute
+            <Route
               path="/movies/details/:movieId"
               exact
               component={MovieDetails}
@@ -41,7 +41,7 @@ function App() {
               component={EditMovie}
             />
             <PrivateRoute path="/movies/add-new" exact component={AddNew} />
-            <PrivateRoute path="/movies/:genre" exact component={Movies} />
+            <Route path="/movies/:genre" exact component={Movies} />
             <PrivateRoute path="/dashboard/to-watch" component={ToWatch} />
             <PrivateRoute path="/dashboard/watched" component={Watched} />
             <Route path="/login" exact component={Login} />
