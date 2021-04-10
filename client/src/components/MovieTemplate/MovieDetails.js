@@ -15,7 +15,7 @@ import {
 export default function MovieDetails({ match }) {
   const [user] = useContext(AuthContext);
   const [movieId] = useState(match.params.movieId);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [movie, setMovie] = useState({});
   const [toWatch, setToWatch] = useState([]);
   const [watched, setWatched] = useState([]);
@@ -116,12 +116,14 @@ export default function MovieDetails({ match }) {
 
   return (
     <main className={style.moviedetails}>
+       <h1>Movie Details</h1>
+       <ul>
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <h1>Movie Details</h1>
-          <ul>
+         
+
             <h2>{movie.title}</h2>
             <div className={style.leftSide}>
               <img src={movie.posterURL} alt="movie poster" />
@@ -204,9 +206,10 @@ export default function MovieDetails({ match }) {
                 </p>
               </li>
             </div>
-          </ul>
+          
         </>
       )}
+      </ul>
     </main>
   );
 }

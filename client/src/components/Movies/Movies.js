@@ -61,7 +61,7 @@ class Movies extends Component {
           <div className={style.movies}>
             <ul>
               {this.state.movies.length !== 0 &&
-                this.state.movies.map((movie) => (
+                this.state.movies.sort((a, b) => a.title.localeCompare(b.title)).map((movie) => (
                   <Movie key={movie._id} {...movie} />
                 ))}
               {this.state.movies.length === 0 && (

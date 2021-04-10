@@ -30,7 +30,7 @@ function Watched() {
           <h1>Already Watched</h1>
           <ul>
             {watched &&
-              watched.map((movie) => <Movie key={movie._id} {...movie} />)}
+              watched.sort((a, b) => a.title.localeCompare(b.title)).map((movie) => <Movie key={movie._id} {...movie} />)}
             {watched.length === 0 && (
               <>
                 {" "}

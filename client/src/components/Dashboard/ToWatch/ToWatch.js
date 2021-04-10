@@ -39,7 +39,7 @@ render() {
           <h1>Movies to watch</h1>
           <ul>
             {this.state.moviesToWatch.length !== 0 &&
-              this.state.moviesToWatch.map((movie) => <Movie key={movie._id} {...movie} />)}
+              this.state.moviesToWatch.sort((a, b) => a.title.localeCompare(b.title)).map((movie) => <Movie key={movie._id} {...movie} />)}
             {this.state.moviesToWatch.length === 0 && (
               <>
                 {" "}
