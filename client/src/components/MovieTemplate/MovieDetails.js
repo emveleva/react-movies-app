@@ -61,12 +61,9 @@ export default function MovieDetails({ match }) {
   }, [movie]);
 
   let isOwner = false;
-console.log(user._id)
-console.log(movie)
-// console.log(user._id === movie.user)
-  // if (user._id === movie.user || user.username === "admin") {
-  //   isOwner = true;
-  //     } 
+  if (user._id === movie.user || user.username === "admin") {
+    isOwner = true;
+  } 
 
   // adds movie in to-watch
   const handleToWatchSubmit = (e) => {
